@@ -1,0 +1,34 @@
+1. Create a express app with pug as view engine
+     express |||dirname||| --view=pug
+
+2. npm install
+
+3. cd |||dirname|||
+now run the app:
+     $ DEBUG=|||dirname|||:* npm start
+          DEBUG=express-inventory.app:* npm start
+4. Create a .gitgnore file with node_modules entry
+     cat << EOF >> .gitignore <enter>
+          node_modules <enter>
+          EOF
+
+5. Create mongoDB Database via browser
+
+6. Install mongoose
+     npm install mongoose
+
+7. Setup db in app.js
+     //Set up mongoose connection
+     var mongoose = require('mongoose');
+     var mongoDB = '||||||||||||||';
+     mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+     var db = mongoose.connection;
+     db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+8. Schemes, Models
+
+9. npm install async
+
+10. Populate db     
+     Run the script using node in your command prompt, passing in the URL of your MongoDB database (the same one you replaced the insert_your_database_url_here placeholder with, inside app.js earlier):
+     node populatedb <your mongodb url>

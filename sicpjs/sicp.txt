@@ -1,0 +1,34 @@
+
+
+Meine Notizen:
+
+
+S.17:
+Sie (...die MIT Student_innen...)  sollten in der Lage sein, ein 50 Seiten langes Programm zu lesen, wenn es in
+vorbildlichem Stil geschrieben ist. Sie sollten jederzeit wissen, was sie nicht zu
+lesen brauchen, und was sie nicht zu verstehen brauchen. Sie sollten mit sicherer
+Hand ein Programm modiflzieren, ohne von Geist und Stil des Urhebers abzuwei-
+chen.
+
+S.22:
+Wir sind im Begriff, die Vorstellung von Rechenprozessen zu untersuchen. Ein Rechenprozess ist ein abstraktes Etwas, das dem Rechner innwohnt.
+Während er abläuft, bearbeitet in Prozeß andere abstrakte Dinge, genannt Daten. Der Ablauf eines Prozesses wird durch einen Satz von Regeln 
+gesteuert, genannt Programm.
+...
+Die Programme, die wir verwenden, um Prozesse zu beschwören, sind wie Zaubersprüche.
+
+S.25.:
+Jede leistungsfähige Sprache besitzt drei Mechaniscmen, ...die Kombination von einfachen zu komplexen Vorstellungen...  zu erreichen:
+- elementare Ausdrücke, die die einfachsten Einheiten der Sprache repräsentieren
+- Mittel zur Kombination, mit denen zusammengesetzte Elemente aus einfacheren konstruiert werden
+- Mittel zur Abstraktion, mit denen zusammengesetzte Elemente benannt und als Einheiten behandelt werden kännen
+
+Beim Programmieren haben wir mit zwei Arten von Elementen zu tun: Prozessen und Daten.
+Informell ausgedrückt sind Daten die "Dinger", die wir bearbeten wollen, und Prozeduren beschreiben die Regeln für die Bearbeitung
+
+
+
+
+
+
+

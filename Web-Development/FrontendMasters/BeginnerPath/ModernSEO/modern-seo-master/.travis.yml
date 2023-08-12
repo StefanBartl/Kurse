@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - '8.17.0'
+  - 'stable'
+
+addons:
+  chrome: stable
+
+cache:
+  yarn: true
+
+sudo: required
+dist: trusty
+
+script: yarn test
+
+before_script:
+  - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
+  - sudo chown root /opt/google/chrome/chrome-sandbox
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+after_success:
+  - yarn travis-deploy-once "yarn semantic-release"
+
+install:
+  - yarn install --no-lockfile --non-interactive
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

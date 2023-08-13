@@ -1,0 +1,3 @@
+ nvim $(yarn -s day)
+   
+   npx test

@@ -79,6 +79,69 @@ In diesem Beispiel bildet die innereFunktion eine Closure über die aeussereVari
 
 
 
+## Git 
+
++ Git teilt die Arbeitsumgebung in drei Bereiche: ***Working area*** (untracked files), ***Staging area*** (added files), ***Repository*** (commited files).
++ Mit dem CLI-Tool ***tree*** kann man Git Repositories gut darstellen -> tree .git 
++ In Git wird der content gehashed:
+    + Git anweisen, aus Daten einen SHA1 Hash zu erstellen und auszugeben: 
+        + `echo 'Hello, World!' | git hash-object --stdin`
+    + Git anweisen, aus einem Daten + Metadaten (zb.: eines Blobs) einen SHA1 Hash herzustellen:
+        + `echo 'blob 14\0Hello, World!' | openssl sha1`
+    + Git anweisen, den Inhalt eines Hashs auszugeben:
+        + `git cat-file -p 980a0` (wobei 980a0 der Hash ist und hier beispielhasft eingefügt ist)
++ Es gibt Git-Objekte wie  Blobs, Commits und Trees. In beiden werden Headerinformation sowie der Content mit einem SHA-1 Hash gespeichert. Außerdem gibt es mit \0 delimiter um die Daten zu trennen. 
+    
+    + ***Blob***: In Blob's speichert Git komprimierte Daten zusammen mit Metadaten (im Header). DOe Objektstruktur ist wie folgt:
+        + Identifier "Blob"
+        + Größe des contentas
+        + \0 delimiter
+        + content 
+        + ![blob obj](./Git/00_Blob.png "Blob object definition")
+    + Im Blob werden aber weder Dateinamen noch Ordnerverzeichnisstrukturen abgespeichert! Dies geschieht in einem Tree-Objekt.
+
+    + ***Tree***: 
+        + Pointer: Zu Blobs & anderen Trees als SHA1
+        + Metadaten: Pointertyp (blob oder tree), Datei- oder Verzeichnisname und Modus (Executable, symbolic link,..) als String
+        + ![tree obj](./Git/00_Tree.png "Tree object definition")x
+    + Trees zeigen auf Blobs und andere Tree-Objekte
+
+    + ***Commmit***: Ein commit zeigt auf einen tree und enthält folgende Metadaten:
+        + Autor und committer
+        + Datum
+        + Nachricht
+        + Parent commit (eines oder mehrere)
+    + Der SHA1 von einem commit ist der hash von alle diesen Informationen
+    + ![commit struct](./Git/00_Commit.png "Tree object definition")
+    + Ein commit zeigt auf parent-commits und andere trees
+    + EIn commit ist ein "Code Snapshot", eine Momentaufnahme des Codes zu einer bestimmten Zeit.
+
++ In Git werden identische Daten - also ein identischer Hash - nur einmal abgespeichert, egal wie oft dies vorkommt. 
++ Git speichert in .git/objects diese Objekte ab. Diese werden in Subfolder gereiht, die nach den ersten beiden SHA1-Symbolen benannt sind, also zb.: 8P, 0U, TT usw... Alle Hashes die mit demselben beiden Symbolen beginnen, kommen in den gleichen Folder. Diese Prefixe werden bei diesen Objektnamen dann weggellassen.
++ Git-Objekte werden komprimiert. Der Inhalt der Dateien bleibt meistens gleich und deswegen kann Git Dateien zusammen in sogennanten Packfiles komprimieren. 
++ Packfiles speichern Objekte und "Deltas", die Differenz zwischen verschiedenen Versionen einer Datei.
++ Packfiles werden erstellt wenn man zuviele Objekte hat, während gc oder einem push to remote.
+
+
++ git cat-file -t *ersten 4 SHA1 Symbole* zeigt den Objekttypen an
++ In .git/HEAD wird der Pointer gespeichert, welcher zum current Brnche zeigt, 
+    + Erstellt man einen neuen Branche so wird auch der Pointer zu diesen hier abeseichert
+
+
+Git Kommandos:
+`git add -p ?` -> interaktives staging
+`git commit -a` -> staging überspringen
+
+Kommandos für das CLI-Tool ***less***:
+f = for next page
+b = for previous page
+/<query>
+n = next match
+p = previous match
+To quit:
+q = to quit
+[less man page](https://linux.die.net/man/1/less)
+
 
 
 

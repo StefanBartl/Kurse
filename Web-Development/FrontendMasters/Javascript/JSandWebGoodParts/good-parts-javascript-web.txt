@@ -1,0 +1,51 @@
+The Good Parts of JavaScript and the Web
+  And Then There Was JavaScript
+    Objects
+    00:00:02: Objekt.create(null) erbt nicht von Object.prototype (erbt von nichts). Dies kann 
+              man nutzen um wie in einem Hashtable Key=value  zu speichern
+              https://frontendmasters.com/courses/good-parts-javascript-web/objects?t=2
+    
+    00:03:57: Ein Nachteil von Klassen-Orientierten Systemen ist, dass man zu Beginn eines 
+              Projektes die Klassen taxonomieren muss, festlegen wie sie aussehen und was 
+              wovon erbt. und das zu einen Zeitpunkt, zu Beginn, bei dem man noch am 
+              allerwenigsten darüber weiß wie die Klassen zum Schluss aussehen werden.
+              https://frontendmasters.com/courses/good-parts-javascript-web/objects?t=237
+    
+    Numbers
+    00:00:38: In JS gibt es keine Integer, nur 64-Bit floating Number (Double)
+              https://frontendmasters.com/courses/good-parts-javascript-web/numbers?t=38
+    
+    Booleans and Strings
+    00:03:21: Strings sind einer oder eine Sequenz von 16-Bit Unicode Characters
+              https://frontendmasters.com/courses/good-parts-javascript-web/booleans-and-strings?t=201
+    
+    00:04:21: + Präfix konvertiert einen String in eine Nummer: +str
+              https://frontendmasters.com/courses/good-parts-javascript-web/booleans-and-strings?t=261
+    
+    00:05:43: Strings sind 16-Bit Characters
+              https://frontendmasters.com/courses/good-parts-javascript-web/booleans-and-strings?t=343
+    
+    Arrays
+    00:00:55: Arrays erben von Object.
+Properties werden in einen String geparst.
+              https://frontendmasters.com/courses/good-parts-javascript-web/arrays?t=55
+    
+    00:00:58: Indexe werden in eine. String geparst, nicht properties.
+              https://frontendmasters.com/courses/good-parts-javascript-web/arrays?t=58
+    
+    Dates, RegEx, & Types
+    00:01:30: jex.im/regulex ist ein Toll in welches man Regex eingeben kann und man gezeigt 
+              bekommt, was dieses Regex macht.
+              https://frontendmasters.com/courses/good-parts-javascript-web/dates-regex-types?t=90
+    
+    00:04:07: hier wird erklärt, dass eine Variable die man nicht initialisiert von JS 
+              automatisch mit undefined initialisiert wird.
+              https://frontendmasters.com/courses/good-parts-javascript-web/dates-regex-types?t=247
+    
+    Statements
+    00:00:13: Statements könmen Labels haben --! Label break;
+              https://frontendmasters.com/courses/good-parts-javascript-web/statements?t=13
+    
+    00:00:44: forEch() statt for loops probiere
+              https://frontendmasters.com/courses/good-parts-javascript-web/statements?t=44
+    

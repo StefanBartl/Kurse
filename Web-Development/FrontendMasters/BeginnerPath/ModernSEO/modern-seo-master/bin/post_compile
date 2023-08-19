@@ -1,3 +1,0 @@
-#!/bin/sh
-yarn remove node-sass
-yarn add node-sass@latest

@@ -1,0 +1,101 @@
+-- OPTIONS:
+
+vim.opt.guifont = "HurmitNerdFont-Regular:12"
+vim.opt.guicursor = ""
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.termguicolors = true
+vim.opt.backspace = "2"
+vim.opt.showcmd = true
+vim.opt.autowrite = true
+vim.opt.cursorline = true
+vim.opt.autoread = true
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = "80"
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.shiftround = true
+vim.opt.expandtab = true
+
+-- Enter fügt leere Zeile oberhalb  cursor ein 
+vim.keymap.set("n", "<A-Enter>", "0i<CR><C-c>")
+-- Nächster Nvim Tab:  gt oder gT, hier neuer Tab:
+vim.keymap.set("n", "<C-M-t>", "<cmd>:tabnew<CR>")
+-- Speichern
+vim.keymap.set("n", "<C-s>", "<cmd>:w<CR>")
+-- Datei sourcen
+vim.cmd([[autocmd FileType * nnoremap <buffer> <leader>so :so<CR>]])
+-- MarkdownPreview Toggle
+vim.keymap.set("n", "mark", "<cmd>:MarkdownPreviewToggle<CR>")
+-- Sprachprüfung auf Deutsch / Englisch toggeln
+vim.keymap.set("n", "deutsch", "<cmd>setlocal spell spelllang=ger<CR>")
+vim.keymap.set("n", "english", "<cmd>setlocal spell spelllang=en_us<CR>")
+-- Kopiert einer ganzen Zeile in das System Clipboard
+vim.keymap.set('n', 'copyz', ':let @+=getline(".")<CR>')
+vim.keymap.set('v', 'copyz', ':let @+=getline(".")<CR>')
+-- Kopiert ganze Datei vom Cursor an in das System Clipboard
+vim.keymap.set('n', 'copyc', ':.,$y+<CR>')
+vim.keymap.set('v', 'copyc', 'y:let @+=@0<CR>')
+-- Kopiert ganze Datei in das System Clipboard
+vim.keymap.set('n', 'copyf', ':%y+<CR>')
+vim.keymap.set('v', 'copyf', 'y:let @+=@0<CR>')
+-- Im Insert Modus navigieren
+vim.keymap.set('i', '<C-M-h>', '<Left>')
+vim.keymap.set('i', '<C-M-j>', '<Down>')
+vim.keymap.set('i', '<C-M-k>', '<Up>')
+vim.keymap.set('i', '<C-M-l>', '<Right>')
+
+-- Set UltiSnips expand trigger to <Tab>
+vim.g.UltiSnipsExpandTrigger = "<Tab>"
+-- Set UltiSnips jump forward trigger to <C-j>
+vim.g.UltiSnipsJumpForwardTrigger = "<C-j>"
+-- Set UltiSnips jump backward trigger to <C-k>
+vim.g.UltiSnipsJumpBackwardTrigger = "<C-k>"
+
+vim.g.mkdp_browser = '/snap/bin/brave'
+
+
+vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>seek", ":nohlsearch<CR>")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+-- Clipboard tool notwendig?
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- Suche das Wort unter dem Cursor in der ganzen Datei und ersetzt alle
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Datei ausführbar machen uns Änderungen speichern
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- Spezialeffekt
+vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+-- Kann ich noch nicht verwenden:
+
+--vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/core/plugins.lua<CR>");
+--vim.keymap.set("n", "Q", "<nop>")
+--vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+--vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+--vim.keymap.set("n", "<leader>Y", [["+Y]])
+--vim.keymap.set("x", "<leader>p", [["_dP]])
+--vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+--vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)

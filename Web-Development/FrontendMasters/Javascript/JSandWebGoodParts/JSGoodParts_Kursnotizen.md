@@ -1,4 +1,4 @@
-# The Good Parts of Javascript and the Web / Douglas Crockford (Paypal)
+# The Good Parts of Javascript and the Web / Douglas Crockford (Paypal) / Mitte August, 23`
 
 ## Loops: *for*, *forEach*, *every*
 

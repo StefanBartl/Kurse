@@ -1,6 +1,6 @@
-###  JS Hard Parts v2
+## JS Hard Parts v2 / Will Sentance ( Codesmith CEO ) / Mitte August, 23
 
-#### Funktionen
+## Funktionen
 
 + ***Execution context***: Eine Funktion stellt in Javascript einen neuen Ausführungskontext (en.: execution context) dar, da ein neuer "Thread of Execution" und ein neuer lokaler Speicher zur Verfügung gestellt wird. Dies wird über ***scope*** und ***cllosure*** realisiert.
     + Die Funktionsdefinition und der Name wird im ***global()*** Ausführungkontext gespeichert: Label -> Funktionsname & value _> Funktionsdefinition.
@@ -52,5 +52,98 @@ closuresBeispiel(); // D
 ```
 In diesem Beispiel bildet die innereFunktion eine Closure über die aeussereVariable, wodurch sie Zugriff auf aeussereVariable hat, obwohl aeussereFunktion bereits beendet ist.
 
+
+## Callback-Queue vs, Microtask-Queue
+
+### Promise Microtask Queue (auch bekannt als Microtask Queue)
+
+Die Microtask Queue ist eine Warteschlange für Aufgaben, die auf Mikroaufgaben basieren, wie sie durch Promises und der Funktion queueMicrotask erstellt werden. Diese Mikroaufgaben haben eine höhere Priorität als die Aufgaben in der Callback Queue und werden vor diesen ausgeführt. Dies bedeutet, dass sie den Call Stack abarbeiten, bevor die Callback Queue bearbeitet wird.
+
+```
+console.log("Start");
+
+Promise.resolve().then(() => {
+  console.log("Microtask 1");
+});
+
+Promise.resolve().then(() => {
+  console.log("Microtask 2");
+});
+
+console.log("End");
+```
+
+In diesem Beispiel werden "Start", "End" und dann "Microtask 1" und "Microtask 2" in dieser Reihenfolge protokolliert.
+
+### Callback Queue
+
+Die Callback Queue ist eine Warteschlange für asynchrone Aufgaben, die nicht auf Promises basieren. Sie enthält z.B. Aufgaben von setTimeout, AJAX-Anfragen oder Event-Listenern. Diese Aufgaben haben eine geringere Priorität als Mikroaufgaben und werden nach diesen abgearbeitet.
+
+```
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Callback 1");
+}, 0);
+
+setTimeout(() => {
+  console.log("Callback 2");
+}, 0);
+
+console.log("End");
+```
+In diesem Beispiel werden "Start", "End", "Callback 1" und "Callback 2" in dieser Reihenfolge protokolliert.
+
+### Node.js Speziafall
+
+In Node.js kann man die Ausführung von Callbacks in der Callback Queue beeinflussen, indem man die Funktionen process.nextTick oder setImmediate verwendet. Diese ermöglicht es, Callbacks mit unterschiedlicher Priorität in den nächsten Durchlauf der Ereignisschleife zu verschieben. 
+Die Funktion `process.nextTick` hat eine höhere Priorität als `setImmediate`. Callbacks, die mit `process.nextTick` hinzugefügt werden, werden vor Callbacks in der setImmediate Queue ausgeführt. Dadurch kannst du praktisch Mikroaufgaben hinzufügen, die vor anderen Aufgaben in der Ereignisschleife ausgeführt werden sollen.
+
+```
+console.log("Start");
+
+process.nextTick(() => {
+  console.log("Next Tick 1");
+});
+
+setImmediate(() => {
+  console.log("Set Immediate 1");
+});
+
+console.log("End");
+```
+
+In diesem Beispiel wird die Reihenfolge des Loggens wie folgt sein:
+
+```
+"Start"
+"End"
+"Next Tick 1"
+"Set Immediate 1"
+```
+
+## Protoype Chain
+
+### Prototypen Link 
+
+Der Vorteil der Prototype-Chain ist, dass Code nur 1x gespeichert werden muss und danach wieder verwendet werden kann:
+
+```
+function userCreator (name, score) {
+    const newUser = Object.create(userFunctionStore); // userFunctionStore wird als Prototyp für neue User gesetzt
+    newUser.name = name;
+    newUser.score = score;
+    return newUser;
+};
+
+const userFunctionStore = { // Da als Protoytp gesetzt hat userFunctionStore Zugriff auf die lokalen Variabeln
+    increment: function(){this.score++;},
+    login: function(){console.log("Logged in");}
+};
+
+const user1 = userCreator("Will", 3);
+const user2 = userCreator("Tim", 5);
+user1.increment();
+```
 
 

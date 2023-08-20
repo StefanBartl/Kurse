@@ -1,5 +1,5 @@
 # Polyfill for `Object.is(..)`
-
+t
 In this exercise, you will define a polyfill for `Object.is(..)`. No cheating and looking it up online!
 
 ## Instructions

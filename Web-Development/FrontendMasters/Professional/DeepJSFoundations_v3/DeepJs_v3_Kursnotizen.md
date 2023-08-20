@@ -1,9 +1,12 @@
 # Deep Javascript Foundations v3 / Kyle Simpson, Teacher &  Autor "You dont know JS", getify / Mitte August, 23'
 
+## Takeaways
+
 + Object.is(item1, item2); // Gibt == zurück: Unterschied zu === ist, dass es -0 und +0 als gleich und NaN zu NaN als ungleich zurück gibt.
 + Bei Verwendung von `new` vor String(), Number() oder Boolean() wandelt man einen primitiven Datentyp in ein Objekt um, was zu unnötigen Overhead führt.
 + Mit `Object.prototype.toString = "Was ich will"` kann man den 'String Tag' von Objekten überschreiben, welcher normalerweiße [object Object] ist. Geht mit alle Typen.
-
++ `while(someth.length > 0)` anstatt `while(someth.length)`
++ In Kommentare schreiben Warum mnan dies gerade macht, nicht wie, denn dafür ist der Code selbst da. Ausnahme bei sehr komplexen Code, dann nur das nötigste "Wie" schreiben
 
 
 ## ToPrimitive

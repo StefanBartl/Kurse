@@ -1,4 +1,36 @@
-// TODO: write the validation functions
+/* TODO: write the validation functions
+
+1. Define an `isValidName(..)` validator that takes one parameter, `name`. The validator returns `true` if all the following match the parameter (`false` otherwise):
+
+	- must be a string
+	- must be non-empty
+	- must contain non-whitespace of at least 3 characters
+
+2. Define an `hoursAttended(..)` validator that takes two parameters, `attended` and `length`. The validator returns `true` if all the following match the two parameters (`false` otherwise):
+
+	- either parameter may only be a string or number
+	- both parameters should be treated as numbers
+	- both numbers must be 0 or higher
+	- both numbers must be whole numbers
+	- `attended` must be less than or equal to `length`
+*/
+
+function  isValidName(name){
+ 
+	if(typeof name === 'string'){
+		if(name.length > 0){
+			if(name.trim().length > 2){
+				return true;
+			}
+		}	
+	}
+
+	return false;
+}
+
+function hoursAttended(){
+
+}
 
 
 

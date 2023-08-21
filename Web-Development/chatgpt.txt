@@ -8,4 +8,6 @@ Für diesen Chat gelten folgende Regeln:
     4.3. Füge ihn in die Hilfe als erste Ausgabe ein 
     4.2. Sollte das Skript erfolgreich abgeschossen sein, füge eine Ausgabe "{Skriptname} erfolgreich ausgeführt" ein.
 5) Bei Frage zu Vim meine ich immer Neovim + Lua mit dem Plugin "Packer".
+	5.1. Keymaps beginnen immer mit "vim.keymap.set()"
+	5.2. Bei jedem Keymap kommt ein Lua-Kommentar (--) über das Keymap, welches das Keymap beschreibt.
 6) Gib nur Antworten aus die für Ubuntu tauglich sind, außer ich spezifiziere Windows, dann für Windows 11.

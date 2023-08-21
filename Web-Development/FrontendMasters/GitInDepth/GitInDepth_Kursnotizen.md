@@ -1,5 +1,9 @@
 # GitInDepth / Nina Zakharenko ||| Mitte Aug, 2023
 
+[repo](https://github.com/nnja/advanced-git)
+
+## Takeaways
+
 + Git teilt die Arbeitsumgebung in drei Bereiche: ***Working area*** (untracked files), ***Staging area*** (added files), ***Repository*** (*commit*ed files).
 
 + Mit dem CLI-Tool ***tree*** kann man Git Repositories gut darstellen: `tree .git` 

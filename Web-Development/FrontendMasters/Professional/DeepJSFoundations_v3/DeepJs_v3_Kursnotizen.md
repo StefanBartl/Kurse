@@ -7,6 +7,9 @@
 + Mit `Object.prototype.toString = "Was ich will"` kann man den 'String Tag' von Objekten überschreiben, welcher normalerweiße [object Object] ist. Geht mit alle Typen.
 + `while(someth.length > 0)` anstatt `while(someth.length)`
 + In Kommentare schreiben Warum mnan dies gerade macht, nicht wie, denn dafür ist der Code selbst da. Ausnahme bei sehr komplexen Code, dann nur das nötigste "Wie" schreiben
++ `==` und `===` verhalten sich gleich wenn die zuvergleichenden Typen gleich sind. `==` ist automatische Typumwandlung (en.: coercion) erlaubt. Sind beide Typen gleich wir jedenfalls `===` ausgeführt.
++ Boolean: "", 0, -0, null, NaN, false und undefined werden zu `false` umgewandelt ('falsy values), alles andere ist immer `true` (truthy values)
++ In einer 'true interpreted language' wie zb.: Bash würde ein Fehler in Zeile 9 erst auffalen, wenn das Programm  dort angekommen ist. Der Fakt, das Javascript die Programmdatei prüft, bevor sie ausgeführt wird, bedeutet für sich, dass Javascript 'kompiliert' wird bzw. zumindest nicht 'nur' interpretiert, Stichwort JIT - Just in Time Compiler- JS-Code wird zur Laufzeit in optimierten Machinencode übersetzt.
 
 
 ## ToPrimitive
@@ -91,7 +94,15 @@ console.log(myObject[symbol1]); // Zugriff auf die Symbol-Eigenschaft
 
 In diesem Beispiel werden zwei eindeutige Symbole symbol1 und symbol2 erstellt. Obwohl beide Symbole denselben Beschreibungstext haben, sind sie nicht gleich. Dann wird ein Objekt myObject erstellt, das eine Eigenschaft mit dem Symbol symbol1 verwendet. Der Zugriff auf diese Eigenschaft erfolgt durch Verwendung des Symbols als Schlüssel. Da Symbol-Eigenschaften standardmäßig nicht aufzählbar sind, werden sie nicht in for...in-Schleifen angezeigt.
 
+## Interpreted vs Compiled
 
++ Just-In-Time-Kompilierung (JIT-Kompilierung): Moderne JavaScript-Engines, die in Webbrowsern und JavaScript-Runtime-Umgebungen wie Node.js verwendet werden, verwenden Techniken wie JIT-Kompilierung. Hierbei wird der JavaScript-Code nicht im herkömmlichen Sinne vorab in Maschinencode übersetzt, sondern der JavaScript-Code wird zur Laufzeit in optimierten Maschinencode kompiliert, um die Ausführung zu beschleunigen.
+
++ Transpilierung: Obwohl JavaScript an sich nicht im klassischen Sinne kompiliert wird, gibt es Tools wie Babel, die JavaScript-Code transpilieren. Transpilierung bezieht sich darauf, dass der Quellcode von einer Version von JavaScript in eine andere Version von JavaScript übersetzt wird. Dies wird oft für die Unterstützung neuerer JavaScript-Funktionen auf älteren Browsern oder für die Verwendung von neuen Sprachfunktionen, die noch nicht von allen Browsern unterstützt werden, verwendet.
+
++ Build-Prozesse: In modernen Webentwicklungs-Workflows werden JavaScript-Dateien oft in Produktionsumgebungen optimiert, zusammengeführt und minifiziert. Dies geschieht während des Build-Prozesses, bei dem Tools wie Webpack, Rollup oder Parcel verwendet werden. Diese Tools können den JavaScript-Code so optimieren, dass er effizienter ausgeführt wird und die Dateigröße minimiert wird.
+
+Zusammengefasst wird JavaScript im Allgemeinen zur Laufzeit interpretiert oder zur Laufzeit in optimierten Maschinencode kompiliert. Dies ermöglicht es Entwicklern, flexiblen und plattformübergreifenden Code zu schreiben, der auf verschiedenen Umgebungen funktioniert, ohne dass eine spezifische Kompilierung erforderlich ist.
 
 
 

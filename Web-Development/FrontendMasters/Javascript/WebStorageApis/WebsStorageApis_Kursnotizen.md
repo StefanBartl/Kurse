@@ -1,5 +1,7 @@
 # Web Storage API's / Maximiliano Firtman (Selbständig) / Mitte August, 23`
 
+[Kurswebsite](https://firtman.github.io/browser-storage/)
+
 ## Was können sie - Vorteile
 
 + Sollte der Server offline sein oder der User keine Verbindung haben, kann die App trotztdem noch Funktionalitäten bieten

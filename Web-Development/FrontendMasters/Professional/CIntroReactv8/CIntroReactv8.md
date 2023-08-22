@@ -6,7 +6,7 @@
 
 ## Takeaway  
 
-+
++ React hat sogenannten *One-Way Data Flow*, was bedeutet, dass nur von oben nach unten Daten übergeben werden können. (Redux)
 + 
 + 
 

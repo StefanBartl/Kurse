@@ -1,4 +1,3 @@
-# Allgemeine Notizen
 
 ## Javascript
 
@@ -25,6 +24,11 @@ curl cht.sh/typescript/enum+string
 
 
 ## Näher anschauen
+
++ `find ~/Development -type f -exec  grep -H "Cheatsheet" {} +` sucht nach dem Text Cheatsheet rekursiv im Verzeichnis Development und gibt den Daateinamen aus 
++ `find /Development -type f -exec sed -i 's/Cheatsheet/Aha/g' {} +` ersetzt Cheatsheet durch Aha
++ `sed 's/old_text/new_text/g' input.txt > output.txt` In diesem Beispiel wird der Befehl sed verwendet, um alle Vorkommnisse von "old_text" in der Datei input.txt durch "new_text" zu ersetzen. Das Ergebnis wird in die Datei output.txt geschrieben.
+
 
 + ArrayBuffer, const a = Uint8Aray() => a[2] = 45, über console ausgeben! usw..
 

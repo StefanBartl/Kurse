@@ -7,7 +7,8 @@
 ## Takeaway  
 
 + React hat sogenannten *One-Way Data Flow*, was bedeutet, dass nur von oben nach unten Daten übergeben werden können. (Redux)
-+ 
-+ 
++ Wenn man auf einen Array map() anwendet und in der fn ein JSX-Component zurückgibt, bekommt man einen Array voll mit React-Component
++ *this* in einer Arrow-Function erstellt keinen neuen Scope und zeigt daher auf das KLassen-Component
+
 
   

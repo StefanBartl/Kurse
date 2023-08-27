@@ -13,6 +13,17 @@
 + Suchmaschinen ranken dich umso höher, wenn: Eine Website auf dich verlinkt, die viel Einfluss hat und selbst wenig verlinkt.
 + Facebook Open Graph Tags: Canonical url: <meta property="og:url" content="http://...." /> kann man eine html "id" festlegen, wenn sich die eigentliche ändert, findet man das Doikument trotzdem. og:type kann verschiedene Sachen zu FB-Card hinzufügen. og:title, og:description, og:image og:image/width or height image is cached for lifetime, wenn man etwas falscheingibt muss man die url ändern
 
+## Cheatsheet
+
++ `curl cht.sh/....`
+```
+curl cht.sh/find~exec
+curl cht.sh/javascript/splice+array
+curl cht.sh/typescript/enum
+curl cht.sh/typescript/enum+string
+```
+
+
 ## Näher anschauen
 
 + ArrayBuffer, const a = Uint8Aray() => a[2] = 45, über console ausgeben! usw..

@@ -1,0 +1,7 @@
+If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+
+With this given data, i would look at the tempo, energy and danceability of the songs the user listened, If they have more of them, maybe he is in more active mood, if less, maybe he have a harder time
+
+Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
+
+The data is to small and categories like danceability are assess individually. Also the duration of 1 year is way to long. Maybe it should be shorter and can change more often in a year. Also we need more categorys and more songsn

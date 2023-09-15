@@ -1,0 +1,41 @@
+.hobbys_box {
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+.hobbys_img_contianer {
+    display: flex;
+}
+
+figure {
+    border: thin #c0c0c0 solid;
+    display: flex;
+    flex-flow: column;
+    padding: 5px;
+    width: 400px;
+    margin: auto;
+}
+
+img {
+    width: 400px;
+    height: 250px;
+}
+
+figcaption {
+    background-color: #222;
+    color: #fff;
+    font: italic smaller sans-serif;
+    padding: 3px;
+    text-align: center;
+}
+
+.hobbys_task {
+    text-align: center;
+}

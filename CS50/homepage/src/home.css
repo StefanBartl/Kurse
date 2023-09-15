@@ -1,0 +1,35 @@
+.home_section {
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-left: .5rem;
+  
+  
+  > h2 {
+    text-decoration: underline;
+    text-align: left;
+  }
+  
+  > p {
+    margin-left: 1rem;
+    text-align: left;
+  }
+}
+
+
+h1 {
+  text-align: center;
+}
+
+#home_desc {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+  
+    <!-- Import Bootstrap to the page -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Load jQuery-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- Load Javascript-Script for tis page-->
+    <script type="text/javascript" src="src/script.js" defer></script>
+    <!-- Load CSS-Files for tis page-->
+    <link href="src/general.css" rel="stylesheet" />
+    <link href="src/home.css" rel="stylesheet" />
+
+    <!-- Set browser tab title -->
+    <title>WKDSteve's CS50 Page</title>
+    <!-- Make sure initially the zoom is set to 1-->
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <!-- Some additionally metadata for the search engine -->
+    <meta name='author' content='Stefan Bartl (WKDStevie)' />
+    <meta name='description' content='Homepage for a CS50 submission' />
+    <meta name='keywords' content='CS50, HarvardX, HTML, CSS, Javascript' />
+    <!-- Load icons -->
+    <link rel='icon' sizes='16x16' href='/graphics/dev_logo-orangeico.ico' />
+    <link rel='apple-touch-icon' sizes='20x20' href='/graphics/dev_logo-orangeico.ico' />
+  
+  </head>
+  <body>
+
+    <!-- Navbar (to make it reusable vith help of jQuery)-->
+    <div id="navbar-placeholder">
+    </div>
+    <script>
+      $(function(){
+        $("#navbar-placeholder").load("components/navbar.html");
+      });
+    </script>
+
+    <!-- Home Section-->
+    <div class="home_section">
+      <h1>Hello, it's nice to have you here!</h1>
+      <p id="home_desc">What am I talking about here?</p>
+      <h2>Hobbys</h2>
+      <p>In this section you can learn more about my hobbies. So much can be revealed: It's not just about computer and information technology, but also about other scientific areas and music! Who doesn't like them in one way or another?</p>
+      <h2>Works</h2>
+      <p>I am fortunate to have turned one of my passions into a career. If you want to learn more about my job, click on "Work"!</p>
+      <h2>Family</h2>
+      <p>I tell about my origin in this area. Family is where you come from and where you recharge your batteries!</p>
+      <h3>Visit every site, there are some special tasks there for you ! Wish you much fun and send you lot's of hugs!</h3>
+    </div>
+
+  </body>
+</html>
+

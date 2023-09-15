@@ -1,0 +1,148 @@
+sort1 uses: Bubble sort
+
+How do you know?:
+Because its fast in the case that the list is sorted, but not so fast if it is not sorted.
+In the other two cases its faster than the sort3, so Bubble sort makes sense.
+
+sort2 uses: Merge sort
+
+How do you know?:
+Because its in two cases way faster than the other and in the third, the sorted list, de facto as fast as the number 1.
+Overall its clearly the fastest algorhytm of the 3 and so it must be the Merge sort.
+
+sort3 uses: Selection sort
+
+How do you know?:
+sort3 is overall slower than sort1, but these two are near byside. Maybe its my spu setup that it is not that clear..
+
+
+            Ranking
+sorted 50000
+    1: sort1 0m1,272s
+    2: sort2 0m1,478s
+    3: sort3 0m4,112s
+
+random 50000
+    1: sort2 0m1,163s
+    2: sort3 3,359s
+    3: sort1 8,400s
+
+reversed 50000
+    1: sort2 085s
+    2: sort3 3,662s
+    3: sort1 5,805s
+
+
+
+            Runs 50000
+
+sorted50000.txt:
+sort1
+real    0m1,272s
+user    0m0,029s
+sys     0m0,138s
+
+sort2
+
+real    0m1,478s
+user    0m0,040s
+sys     0m0,134s
+
+sort 3
+real    0m4,112s
+user    0m2,616s
+sys     0m0,151s
+
+
+random50000.txt:
+
+sort1
+real    0m8,400s
+user    0m6,871s
+sys     0m0,178s
+
+sort2
+real    0m1,163s
+user    0m0,056s
+sys     0m0,134s
+
+
+sort3
+real    0m3,359s
+user    0m2,669s
+sys     0m0,142s
+
+reversed50000.txt:
+
+sort1
+real    0m5,805s
+user    0m0,204s
+sys     0m0,036s
+
+sort 2
+real    0m0,085s
+user    0m0,688s
+sys     0m0,034s
+
+sort3
+real    0m3,662s
+user    0m0,101s
+sys     0m0,045s
+
+
+
+
+
+            Runs 10000
+
+sorted10000.txt:
+sort1
+real    0m0,105s
+user    0m0,003s
+sys     0m0,043s
+
+sort2
+real    0m0,145s
+user    0m0,010s
+sys     0m0,037s
+
+sort 3
+real    0m0,177s
+user    0m0,116s
+sys     0m0,033s
+
+
+random10000.txt:
+
+sort1
+real    0m0,277s
+user    0m0,246s
+sys     0m0,020s
+
+sort2
+real    0m0,048s
+user    0m0,008s
+sys     0m0,030s
+
+
+sort3
+real    0m0,152s
+user    0m0,113s
+sys     0m0,023s
+
+reversed10000.txt:
+
+sort1
+real    0m0,253s
+user    0m0,204s
+sys     0m0,036s
+
+sort 2
+real    0m0,085s
+user    0m0,012s
+sys     0m0,034s
+
+sort3
+real    0m0,197s
+user    0m0,101s
+sys     0m0,045s

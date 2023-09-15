@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+
+            // Function for Part 1
+            function changeColor(e)
+            {
+                // First set back the colors of the buttons from clicking before, so grap all related buttons
+                const trivia_buttons = document.querySelectorAll('.trivia_button');
+                // Go to the returned node-list and set the elements back
+                trivia_buttons.forEach((el) => {
+                    el.style.color = 'white';
+                  });
+
+                // Grap the heading element for altering answer
+                let answer = document.querySelector('#trivia_answer');
+
+                // Check if answer is correct
+                if(e.id != 'vienna')
+                {
+                    // If not, change color and the text in answer
+                    e.style.color = 'red';
+                    answer.innerHTML = "Incorrect";
+                }
+                else
+                {
+                    // If correct, also change color and the text in answer
+                    e.style.color = 'green';
+                    answer.innerHTML = "Correct";
+                }
+            }
+
+
+            // Function for Part 2
+            function confirmFree()
+            {
+              // Get the text field and the answers elements of this section
+              let text_field = document.querySelector('#free_text');
+              let free_answer = document.querySelector('#free_answer');
+              // Check if user provided correct answer
+              if(text_field.value != "Red")
+              {
+                // If not, alter text and answer field
+                text_field.style.color = "Red";
+                free_answer.innerHTML = "Incorrect";
+              }
+              else
+              {
+                // if correct, also alter it
+                text_field.style.color = "Green";
+                free_answer.innerHTML = "Correct";
+              }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+
+                <!-- New container for better control -->
+                <div class="trivia_container">
+                    <!-- heading with question -->
+                    <h3>What is the capital city of Austria?</h3>
+                    <!-- Buttons for answers -->
+                    <input type="button" id="linz" class="trivia_button" value="Linz" onclick="changeColor(this)">
+                    <input type="button" id="vienna" class="trivia_button" value="Vienna" onclick="changeColor(this)">
+                    <input type="button" id="graz" class="trivia_button" value="Graz" onclick="changeColor(this)">
+                    <!-- heading for showing answer -->
+                    <h4 id="trivia_answer"></h4>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+
+                <!-- New container for better control -->
+                <div class="freer_container">
+                    <!-- Heading for the question -->
+                    <h3>Which color corresponds normaly with a wrong answer? (Hint: Capitalize answer!)</h3>
+                    <!-- Input field for the user -->
+                    <input type="text" id="free_text">
+                    <!-- Button for confirm answer -->
+                    <input type="button" value="Confirm" id="free_confirm" onclick="confirmFree()">
+                    <!-- heading for showing answer -->
+                    <h4 id="free_answer"></h4>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

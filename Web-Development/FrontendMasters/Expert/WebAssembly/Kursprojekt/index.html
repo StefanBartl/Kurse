@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <h1>Frontend Masters WebAssembly</h1>
+    <div id="box-1"></div>
 <script type="module">
-import { add } from "./build/release.js";
-document.body.innerText = add(1, 2);
+import { minusOne } from "./build/release.js";
+
+document.getElementById("box-1").innerText = minusOne(42);
+
 </script>
 </head>
 <body></body>

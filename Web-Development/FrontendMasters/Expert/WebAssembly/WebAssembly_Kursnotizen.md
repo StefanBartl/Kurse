@@ -131,7 +131,7 @@ While similar in concept, a Stack is data structure that stores information in L
 
 Web Assembly is stack based language so all operations read and write to the stack in a linear fashion.
 
-You've probably heard of the call stack in JavaScript which is a reserved portion of memory the interpreter uses to keep track of running functions.
+Youve probably heard of the call stack in JavaScript which is a reserved portion of memory the interpreter uses to keep track of running functions.
 
 OpCodes
 Opcodes (Operation Code) are readable computer instructions representing machine language instructions.
@@ -180,26 +180,24 @@ Setup
 Make sure we’re on latest version of node
 
 We need to be version 14 or above.
-
 $ nvm install --lts
+
 Install npx
-
 $ npm i -g npx
+
 Create working directory
-
 $ mkdir iwasm && cd iwasm
+
 Install the loader
-
 $ npm i --save @assemblyscript/loader
+
 Install AssemblyScript
-
 $ npm i --save-dev assemblyscript
-Scaffold and build an empty project
 
+Scaffold and build an empty project
 $ npx asinit .
 $ npm run asbuild
 
-Note
 We're following the [Official AssemblyScript quick start guide](https://www.assemblyscript.org/getting-started.html)
 
 

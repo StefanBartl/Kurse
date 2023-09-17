@@ -1,6 +1,6 @@
 # WebAssembly / Jem Young (Senior Devg, Netflix) / Anfang September
 
-Kurswebsite:
+[Kurswebsite](https://young.github.io/intro-to-web-assembly/https://young.github.io/intro-to-web-assembly/)
 
 ## Takeaways
 

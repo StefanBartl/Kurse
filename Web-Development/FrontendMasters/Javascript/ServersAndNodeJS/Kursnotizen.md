@@ -1,3 +1,4 @@
+
 # The Hard Parts of Node.js & Servers / Will Sentance / Mitte September, 23`
 
 [Course SLides](https://static.frontendmasters.com/resources/2019-04-24-servers-node-js/Hard-Parts-Servers-Node.pdf)
@@ -23,6 +24,73 @@
 `createServer()` triggert Node mithilfe des http Moduls einen Socket auf der Netzwerkkrte zu öffnen und gibt ein Objekt mit einigen Funktionen zurück, die es erlauben den Server/WebSocket zu verändern (wie zb.: `server.listen(80)`)
 
 ## File System
+
+### fs.readFile() und fs.createReadStream()
+
+
+
+**`fs.readFile()`** und **`fs.createReadStream()`** sind beide Methoden in Node.js, die dazu verwendet werden können, Dateien zu lesen, aber sie haben unterschiedliche Verwendungszwecke und sind für verschiedene Szenarien geeignet. Hier ist, wann man sie typischerweise verwenden kann:
+
+1. **`fs.readFile()`**:
+   - Mit **`fs.readFile()`** kann man eine Datei synchron in den Speicher laden und deren Inhalt als Ganzes verarbeiten.
+   - Diese Methode ist blockierend, dh sie wird warten, bis die gesamte Datei gelesen wurde, bevor sie die Kontrolle an das Programm zurückgibt.
+   - Man kann **`fs.readFile()`** gut für kleinere Dateien verwenden oder wenn man den gesamten Dateiinhalt in den Speicher laden und damit arbeiten muss.
+
+   Beispiel:
+   ```javascript
+   const fs = require('fs');
+
+   fs.readFile('datei.txt', 'utf8', (err, data) => {
+     if (err) {
+       console.error('Fehler beim Lesen der Datei:', err);
+       return;
+     }
+     console.log('Dateiinhalt:', data);
+   });
+   ```
+
+2. **`fs.createReadStream()`**:
+   - Mit **`fs.createReadStream()`** kann man große Dateien oder Dateien mit unbekannter Größe lesen, ohne den gesamten Inhalt in den Speicher zu laden.
+   - Diese Methode erstellt einen Stream, der die Datei in kleine Chunks (Teile) liest und diese Chunks asynchron an das Programm liefert, während die Datei gelesen wird.
+   - Man kann **`fs.createReadStream()`** gut für das Streamen großer Dateien, das Verarbeiten von Dateien zeilenweise oder das Verarbeiten von Dateien im Stapelverarbeitungsmodus verwenden, ohne viel Speicher zu verbrauchen.
+
+   Beispiel:
+   ```javascript
+   const fs = require('fs');
+
+   const stream = fs.createReadStream('grosseDatei.txt', 'utf8');
+
+   stream.on('data', (chunk) => {
+     // Man kann den Daten-Chunk verarbeiten
+     console.log('Gelesener Chunk:', chunk);
+   });
+
+   stream.on('end', () => {
+     console.log('Datei wurde vollständig gelesen.');
+   });
+   ```
+
+  Im Wesentlichen hängt die Wahl zwischen **`fs.readFile()`** und **`fs.createReadStream()`** von den Anforderungen und der Größe der zu lesenden Datei ab. Wenn man eine kleine Datei synchron lesen muss, ist **`fs.readFile()`** einfach und praktisch. Für größere Dateien oder Streaming-Anforderungen ist **`fs.createReadStream()`** besser geeignet.
+
+### Stream
+
+  Mit **`fs.createReadStream()`** wird die Datei in *Chunks* aufgeteilt die default 64KB groß sind. Wenn ein *Chunk* über den *Socket* mithilfe der *libuv* Bibliothek **Node** übergeben wird, wird von *Node* das *'data'* Event ausgelöst. Die 'data'-EventHandler-Callback-Funktion wird danach für jeden *Chunk* neu aufgerufen.  
+
+  ```javascript
+  let cleanedTweets = "";
+  
+  function cleanTweets (tweetsToClean){
+    // algorithm to remove bad tweets from `tweetsToClean`
+  }
+  
+  function doOnNewBatch(data){
+      cleanedTweets += cleanTweets(data);
+  }
+  
+  const accessTweetsArchive = fs.createReadStream('./tweetsArchive.json')
+  
+  accessTweetsArchive.on('data', doOnNewBatch); // Hier wird das 'data' Event behandelt
+  ```
 
 ## [libuv](libuv)
 
@@ -89,7 +157,7 @@ Das Error-First-Pattern ist ein Konventionsmuster in Node.js, bei dem Fehler als
 
 + Beispiel 1: Lesen einer Datei mit dem Error-First-Pattern.
 
-	```
+	```javascript
 	const fs = require('fs');
 
 	fs.readFile('datei.txt', 'utf8', (err, data) => {
@@ -105,7 +173,7 @@ In diesem Beispiel wird die readFile-Funktion verwendet, um eine Datei zu lesen.
 
 + Beispiel 2: Ausführen einer Datenbankabfrage mit dem Error-First-Pattern.
 
-	```
+	```javascript
 	const database = require('meine-datenbank');
 
 	database.query('SELECT * FROM nutzer', (err, results) => {

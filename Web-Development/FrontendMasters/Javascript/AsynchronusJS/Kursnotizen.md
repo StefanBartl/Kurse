@@ -2,13 +2,26 @@
 # The Hard Parts of Asynchronus Javascript / Will Sentance / Anfang Oktober 23`
 
 [Course Slides](https://static.frontendmasters.com/resources/2018-05-23-javascript-new-hard-parts/new-hard-parts-slides.pdf)
+
+## Content
+
++ Takeaways
+
++ Promises
+
++ `fetch` & `xhr-(httprequest)` 
+
++ Queues + Event Loop
+
++ Generatoren
+
++ Asynchrones Javascript
+
 ## Takeaways
 
++ `yield` ist ähnlich wie `return`, hält/pausiert aber den *Execution Context* an anstatt die Funktion zu beenden. Alles was rechts von yield stehtm wird evaluiert, also auch `let num = yield 5 + 5` evaluiert zu 10 - yield gibt 10 zurück - und num nimmt den Wert von einem theoretischen `.next(x)` call auf --> `num == x`, weil `num != 10` ! 
 
-+
-
-+
-
++ `fetch` gibt einerseits ein *Promise-Objekt* zurück und stoßt anderereits das Browser-Feature *xhrhttprequest* an. Es ist eine sogenannte 'Facade-Function' 
 
 ## Verwendung von Promises in JavaScript
 
@@ -41,9 +54,30 @@ data
     console.error('Fehler:', error);
   });
 ```
-### Microtak-Queue
+### Promises & Microtask-Queue
 
 Ein interessantes Detail: Bei einem `resolved`-Promise werden alle Funktionen aus dem Unfulfilled-Callbacks-Array des Promise-Objekts in die Mikrotask-Queue gelegt. Der Event-Loop der Laufzeitumgebung (Browser, Node) priorisiert die Abarbeitung der Mikrotasks vor anderen Aufgaben in der Task-Queue. Dadurch werden die in `.then()` übergebenen Funktionen schnell ausgeführt, sobald das Promise `resolved` wird. Dies ermöglicht es, auf die erhaltene Antwort unmittelbar nach Abschluss des Downloads zuzugreifen.
+
+### .then(onFulFillment)
+
+`promise.then(onFulfillment);`
+
++ `promise`: Das Promise-Objekt, auf das .then() angewendet wird.
++ `onFulfillment`: Eine Funktion, die ausgeführt wird, wenn das Promise erfolgreich erfüllt wurde. Diese Funktion erhält normalerweise das Ergebnis der erfolgreichen Operation als Argument.
+```javascript
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Erfolgreich erfüllt!");
+  }, 1000);
+});
+
+myPromise.then((result) => {
+  console.log(result); // Wird nach erfolgreicher Erfüllung ausgeführt
+});
+```
+In diesem Beispiel wird myPromise nach einer Verzögerung von 1 Sekunde erfolgreich erfüllt, und die Funktion, die an .then() übergeben wird, wird mit dem Ergebnis "Erfolgreich erfüllt!" aufgerufen.
+
+Die .then()-Methode ist eine wichtige Funktion in der Arbeit mit Promises, um auf erfolgreiche Erfüllung zu reagieren.
 
 ## fetch
 
@@ -277,3 +311,90 @@ Der Event Loop ist verantwortlich für die Koordination der Ausführung von Aufg
 Dies ist eine vereinfachte Darstellung des Event Loops und der Queues in JavaScript. Es ist wichtig zu verstehen, wie sie funktionieren, um asynchronen Code effektiv zu schreiben.
 
 In den folgenden Teilen dieser Markdown-Datei werde ich weitere Queues und den Event Loop ausführlich behandeln und Beispiele für deren Verwendung geben.
+
+## Generatoren
+
+JS Generatoren sind im Grunde ein Objekt, indem eine Eigenschaft zurückgegeben werden kann, welche die Funktion .next als Wert besitzt. Im lokalen Speicher des Elements ist ein Index gespeichert, der bei jedem Aufruf von .next inkrementiert wird. Damit kann ein Objekt/Kollektion so durchlaufen werden, dass immer das nächste Element zurückgegeben wird.
+
+```javascript
+function* iter(arg) {
+  let start = arg + 10;
+  yield start;
+  start++;
+  let mid = yield 1 + start;
+  start++;
+  mid++;
+  yield start + mid;
+}
+
+let gen = iter(1);
+let val_1 = gen.next(); // 11 (Generator Objekte mit value & done properties)
+let val_2 = gen.next(); // 13
+let val_3 = gen.next(6); // 20
+let val_4 = gen.next(); // undefined
+
+console.table([val_1, val_2, val_3, val_4]);
+```
+
+## Asynchrones Javascript
+
+### Asynchrone Generatoren
+
+```javascript
+function doWhenDataReceived(value) {
+  returnNextElement.next(value);
+}
+
+function* createFlow() {
+  const data = yield fetch('http://twitter.com/will/tweets/1');
+  console.log(data);
+}
+
+const returnNextElement = createFlow();
+const futureData = returnNextElement.next();
+futureData.value.then(doWhenDataReceived);
+```
+
+Das `data`-Objekt, das durch `returnNextElement.next()` zurückgegeben wird, sieht so aus: `{ value: undefined, status: 'pending', unfulfilled: [] }`. `value` ist anfangs `undefined`, da die asynchrone Operation (der *fetch*-Aufruf) noch nicht abgeschlossen ist.
+
+Der status ist '*pending*', da die asynchrone Operation noch aussteht.Das *unfulfilled*-Array ist anfangs leer (`[]`). Es enthält Funktionen, die ausgeführt werden sollen, wenn `value` aktualisiert wird.
+
+Nachdem die asynchrone Operation (der *fetch*-Aufruf) abgeschlossen ist und Daten zurückgibt, wird `value` auf die erhaltenen Daten aktualisiert. Wenn die Daten zurückkommen, wird die `doWhenDataReceived`-Funktion mit diesen Daten aufgerufen, da sie in `.then(doWhenDataReceived)` übergeben wurde.
+
+Das `data`-Objekt wird aktualisiert, nachdem die Daten vom *fetch*-Aufruf zurückkommen, und die `console.log(data)`-Zeile wird die empfangenen Daten ausgeben.
+
+### async / await
+
+```javascript
+async function createFlow(){
+ console.log("Me first")
+ const data = await fetch('https://twitter.com/will/tweets/1')
+ console.log(data)
+}
+createFlow()
+console.log("Me second")
+```
+
+1. Auslösen der asynchronen Funktion: Wenn eine Funktion mit dem async-Schlüsselwort deklariert wird, wird sie automatisch asynchron. Wenn die Funktion aufgerufen wird, wird sie in der Event Loop gestartet.
+
+1. Ausführung der synchronen Teile: Zuerst führt die Funktion alle synchronen Teile des Codes aus. In deinem Beispiel wäre dies console.log("Me first"). Diese Ausgaben erscheinen sofort in der Konsole.
+
+3. await-Ausdruck: Wenn ein await-Ausdruck erreicht wird (in deinem Fall await fetch('https://twitter.com/will/tweets/1')), wird die Ausführung der Funktion an dieser Stelle pausiert, und die Kontrolle wird an den Browser übergeben, um die asynchrone Operation (den fetch-Aufruf) zu verarbeiten.
+
+4. Aufruf des asynchronen Dienstes: Der fetch-Aufruf wird an den Browser übergeben, um Daten von https://twitter.com/will/tweets/1 abzurufen. Der Browser kümmert sich um die Netzwerkanfrage.
+
+5. Rückkehr zur Event Loop: Während der Browser auf die Antwort wartet, kehrt die Event Loop zur asynchronen Funktion zurück. In dieser Zeit wird der Rest der Funktion, nach dem await, nicht ausgeführt.
+
+6. Fortsetzung nach der Antwort: Sobald die Antwort vom Server zurückkommt, wird die Event Loop benachrichtigt, und die Funktion wird an der Stelle fortgesetzt, an der sie pausiert wurde.
+
+7. Verarbeitung der Antwort: In deinem Fall wird die Antwort in der Variable data gespeichert, und dann wird console.log(data) ausgeführt, um die Daten in der Konsole anzuzeigen.
+
+8. Der Schlüssel hierbei ist, dass async/await es ermöglicht, asynchrone Operationen in einem synchronen Stil zu schreiben, was den Code lesbarer macht. Während die asynchrone Operation im Hintergrund ausgeführt wird, wird die Event Loop nicht blockiert, und andere Aufgaben können weiterhin bearbeitet werden. Dies ist besonders nützlich in Webanwendungen, um ein reaktives Benutzererlebnis zu gewährleisten.
+
+
+
+
+
+
+
+

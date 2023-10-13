@@ -80,3 +80,29 @@ Zusammengefasst: Die Verwendung des new-Keywords ist wichtig, um eine Funktion a
 ## class
 
 + Ruft man eine Klasse auf wird die `constructor()` Funktion gecallt und die Argumente in das `this`-Objekt geshrieben
+
+Wenn du eine JavaScript-Klasse erstellst und eine Instanz dieser Klasse erstellst, wird die constructor()-Funktion aufgerufen.
+
+Alle Argumente, die du der Klasse beim Erstellen einer Instanz übergibst, werden in das this-Objekt geschrieben. Das this-Objekt bezieht sich auf die gerade erstellte Instanz der Klasse.
+
+Hier ist ein einfaches Beispiel:
+
+```javascript
+Copy code
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+const person1 = new Person("Alice", 30);
+console.log(person1.name); // "Alice"
+console.log(person1.age);  // 30
+```
+In diesem Beispiel wird die constructor()-Funktion der Person-Klasse aufgerufen, und die übergebenen Argumente ("Alice" und 30) werden in das this-Objekt geschrieben. Dadurch werden die Eigenschaften name und age in der Instanz person1 erstellt.
+
+
+
+
+

@@ -7,6 +7,19 @@
 [NodeEvents](https://nodejs.org/api/events.html)
 [NodeHTTPServer](https://nodejs.org/api/http.html#class-httpserver)
 
+## Conten
+
+- [The Hard Parts of Node.js \& Servers / Will Sentance / Mitte September, 23\`](#the-hard-parts-of-nodejs--servers--will-sentance--mitte-september-23)
+  - [Conten](#conten)
+  - [Takeaways](#takeaways)
+  - [createServer](#createserver)
+  - [File System](#file-system)
+    - [fs.readFile() und fs.createReadStream()](#fsreadfile-und-fscreatereadstream)
+    - [Stream](#stream)
+  - [libuv](#libuv)
+  - [Zusammenfassung der Ereignisse, die stattfinden, wenn man in Node.js ein HTTP-Objekt erstellt und mit einem Client kommuniziert](#zusammenfassung-der-ereignisse-die-stattfinden-wenn-man-in-nodejs-ein-http-objekt-erstellt-und-mit-einem-client-kommuniziert)
+  - [Error First Pattern](#error-first-pattern)
+
 ## Takeaways
 
 + `requests` in Node sind immer in HTTP

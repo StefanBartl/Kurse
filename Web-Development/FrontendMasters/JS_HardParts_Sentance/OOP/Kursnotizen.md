@@ -1,6 +1,14 @@
 
 # The Hard Parts of OOP / Will Sentance / Mitte Oktober, 23`
 
+## Content
+
+- [The Hard Parts of OOP / Will Sentance / Mitte Oktober, 23\`](#the-hard-parts-of-oop--will-sentance--mitte-oktober-23)
+  - [Content](#content)
+  - [Takeaways\]](#takeaways)
+  - [`new`-Keyword](#new-keyword)
+    - [Unterschied `new` vs. kein `new`](#unterschied-new-vs-kein-new)
+  - [class](#class)
 
 ## Takeaways]
 

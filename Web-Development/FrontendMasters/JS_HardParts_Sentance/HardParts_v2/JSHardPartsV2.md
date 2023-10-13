@@ -1,5 +1,23 @@
 ## JS Hard Parts v2 / Will Sentance ( Codesmith CEO ) / Mitte August, 23
 
+
+## Content
+
+- [JS Hard Parts v2 / Will Sentance ( Codesmith CEO ) / Mitte August, 23](#js-hard-parts-v2--will-sentance--codesmith-ceo---mitte-august-23)
+- [Content](#content)
+- [Funktionen](#funktionen)
+- [Callback-Queue vs, Microtask-Queue](#callback-queue-vs-microtask-queue)
+  - [Promise Microtask Queue (auch bekannt als Microtask Queue)](#promise-microtask-queue-auch-bekannt-als-microtask-queue)
+  - [Callback Queue](#callback-queue)
+  - [Node.js Speziafall](#nodejs-speziafall)
+- [Protoype Chain](#protoype-chain)
+  - [Prototypen Link](#prototypen-link)
+  - [__proto__ als Link auf Object.prototype (deprecated)](#proto-als-link-auf-objectprototype-deprecated)
+  - [`this` als implizieter Parameter](#this-als-implizieter-parameter)
+    - [that = this (deprecated)](#that--this-deprecated)
+- [Protoype vs Class](#protoype-vs-class)
+- [Wichtiges](#wichtiges)
+
 ## Funktionen
 
 + ***Execution context***: Eine Funktion stellt in Javascript einen neuen Ausführungskontext (en.: execution context) dar, da ein neuer "Thread of Execution" und ein neuer lokaler Speicher zur Verfügung gestellt wird. Dies wird über ***scope*** und ***cllosure*** realisiert.

@@ -1,5 +1,11 @@
 # Deep Javascript Foundations v3 / Kyle Simpson, Teacher &  Autor "You dont know JS", getify / Mitte August, 23'
 
+- [Deep Javascript Foundations v3 / Kyle Simpson, Teacher \&  Autor "You dont know JS", getify / Mitte August, 23'](#deep-javascript-foundations-v3--kyle-simpson-teacher---autor-you-dont-know-js-getify--mitte-august-23)
+  - [Takeaways](#takeaways)
+  - [ToPrimitive](#toprimitive)
+    - [Symbol](#symbol)
+  - [Interpreted vs Compiled](#interpreted-vs-compiled)
+
 ## Takeaways
 
 + Object.is(item1, item2); // Gibt == zurück: Unterschied zu === ist, dass es -0 und +0 als gleich und NaN zu NaN als ungleich zurück gibt.

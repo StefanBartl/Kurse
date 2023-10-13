@@ -2,6 +2,29 @@
 
 [Kurswebsite](https://young.github.io/intro-to-web-assembly/https://young.github.io/intro-to-web-assembly/)
 
+## Content
+
+- [WebAssembly / Jem Young (Senior Dev, Netflix) / Anfang September](#webassembly--jem-young-senior-dev-netflix--anfang-september)
+  - [Content](#content)
+  - [Takeaways](#takeaways)
+  - [Contents](#contents)
+  - [1. Hexadecimal](#1-hexadecimal)
+    - [hexToDecimal()](#hextodecimal)
+  - [3. toString() method](#3-tostring-method)
+  - [4. What is WebAssembly](#4-what-is-webassembly)
+  - [5. Modules](#5-modules)
+  - [6. Stack and OP code](#6-stack-and-op-code)
+  - [7. Assembly Script](#7-assembly-script)
+  - [8. Writing AssemblyScript](#8-writing-assemblyscript)
+  - [Loading AssemblyScript - NodeJS](#loading-assemblyscript---nodejs)
+  - [Loading AssemblyScript - Browser](#loading-assemblyscript---browser)
+  - [Imports](#imports)
+  - [Defining imports](#defining-imports)
+  - [AssemblyScript Loader](#assemblyscript-loader)
+  - [Using the AssemblyScript loader](#using-the-assemblyscript-loader)
+  - [Memory](#memory)
+  - [JS vs Wasm](#js-vs-wasm)
+
 ## Takeaways
 
 + Under the hood, numbers in JavaScript are 64-bit floating points whereas in Web Assembly all memory pointers are 32-bits

@@ -3,9 +3,29 @@
 
 [Course Slides](https://static.frontendmasters.com/resources/2018-05-23-javascript-new-hard-parts/new-hard-parts-slides.pdf)
 
+
 ## Content
 
-+ Takeaways
+- [The Hard Parts of Asynchronus Javascript / Will Sentance / Anfang Oktober 23\`](#the-hard-parts-of-asynchronus-javascript--will-sentance--anfang-oktober-23)
+  - [Content](#content)
+  - [Takeaways](#takeaways)
+  - [Takeaways](#takeaways-1)
+  - [Verwendung von Promises in JavaScript](#verwendung-von-promises-in-javascript)
+    - [Promises \& Microtask-Queue](#promises--microtask-queue)
+    - [.then(onFulFillment)](#thenonfulfillment)
+  - [fetch](#fetch)
+    - [Ablauf von `fetch()` und `xhrhttprequest`](#ablauf-von-fetch-und-xhrhttprequest)
+    - [Häufig verwendete Optionen für `fetch` und `xhr`](#häufig-verwendete-optionen-für-fetch-und-xhr)
+  - [closures](#closures)
+  - [Queues und Event Loop in JavaScript](#queues-und-event-loop-in-javascript)
+    - [Queues:](#queues)
+    - [Event Loop:](#event-loop)
+  - [Generatoren](#generatoren)
+  - [Asynchrones Javascript](#asynchrones-javascript)
+    - [Asynchrone Generatoren](#asynchrone-generatoren)
+    - [async / await](#async--await)
+
+## Takeaways
 
 + Promises
 

@@ -1,5 +1,27 @@
 # The Good Parts of Javascript and the Web / Douglas Crockford (Paypal) / Mitte August, 23`
 
+- [The Good Parts of Javascript and the Web / Douglas Crockford (Paypal) / Mitte August, 23\`](#the-good-parts-of-javascript-and-the-web--douglas-crockford-paypal--mitte-august-23)
+  - [Loops: *for*, *forEach*, *every*](#loops-for-foreach-every)
+    - [*for*](#for)
+    - [*forEach*](#foreach)
+    - [*every*](#every)
+  - [*Numbers*](#numbers)
+  - [Booleans and Strings](#booleans-and-strings)
+  - [Arrays](#arrays)
+  - [Statements](#statements)
+  - [Functions](#functions)
+    - [Function Statement](#function-statement)
+    - [Function Expression](#function-expression)
+    - [Parameter](#parameter)
+    - [Closure und IIFE](#closure-und-iife)
+  - [Objekte](#objekte)
+    - [constructor](#constructor)
+  - [Sicherheitsrisiken](#sicherheitsrisiken)
+    - [Prototype](#prototype)
+    - [Array/Vektor/Functions](#arrayvektorfunctions)
+    - [Objekte einfrieren](#objekte-einfrieren)
+  - [Tools und things of interest:](#tools-und-things-of-interest)
+
 ## Loops: *for*, *forEach*, *every*
 
 ### *for*

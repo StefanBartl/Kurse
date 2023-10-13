@@ -1,5 +1,14 @@
 # Web Performance / Todd Gardner, TrackJS / Mitte August, 23'
 
+- [Web Performance / Todd Gardner, TrackJS / Mitte August, 23'](#web-performance--todd-gardner-trackjs--mitte-august-23)
+  - [Takeaways](#takeaways)
+  - [Web Vitals](#web-vitals)
+  - [Performance API -\> window.performance](#performance-api---windowperformance)
+    - [performance.getEntries(), performance.getEntriesByType(), performance.getEntriesByName()](#performancegetentries-performancegetentriesbytype-performancegetentriesbyname)
+    - [Performance Observer](#performance-observer)
+  - [Performance Observer Code (nur zu einfachen Testzwecken)](#performance-observer-code-nur-zu-einfachen-testzwecken)
+  - [2nd Version Performance Logging](#2nd-version-performance-logging)
+
 ## Takeaways
 
 + Google ranked Websites runter, wenn die Performance und Responsivenes niedrig (schlecht) ist

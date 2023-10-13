@@ -1,5 +1,34 @@
 # wkd sicpjs notizen 
 
+- [wkd sicpjs notizen](#wkd-sicpjs-notizen)
+  - [Algemein](#algemein)
+  - [Kapitel 1](#kapitel-1)
+    - [Ausdrücke](#ausdrücke)
+    - [Zusammengesetzte Funktionen](#zusammengesetzte-funktionen)
+    - [Lexical Scoping](#lexical-scoping)
+    - [Iterative vs Rekursive Prozesse](#iterative-vs-rekursive-prozesse)
+      - [Rekursive Faktorialfunktion:](#rekursive-faktorialfunktion)
+        - [Linearer rekursiver Prozess im Interpreter:](#linearer-rekursiver-prozess-im-interpreter)
+      - [Iterative Faktorialfunktion(en):](#iterative-faktorialfunktionen)
+        - [Linearer iterativer Prozess im Interpreter:](#linearer-iterativer-prozess-im-interpreter)
+      - [Erklärung](#erklärung)
+    - [Funktionen](#funktionen)
+      - [Lambda-Ausdrücke, Lambda-Funktionen und Arrow-Funktionen](#lambda-ausdrücke-lambda-funktionen-und-arrow-funktionen)
+      - [Arrow-Funktionausdrücke ^arr](#arrow-funktionausdrücke-arr)
+    - [Verwendung von ***const*** zur Erstellung lokaler Namen (in Arrow-Funktionen)](#verwendung-von-const-zur-erstellung-lokaler-namen-in-arrow-funktionen)
+    - [Bedingte Anweisungen (en.: conditional statements)](#bedingte-anweisungen-en-conditional-statements)
+    - [Funktionen als zurückgegebene Werte (en.: returned values)](#funktionen-als-zurückgegebene-werte-en-returned-values)
+  - [Kapitel 2](#kapitel-2)
+    - [Datenabstraktion](#datenabstraktion)
+    - [Currying](#currying)
+  - [Kapitel 3: Modularität, Objekte \& Zustand (en.: state)](#kapitel-3-modularität-objekte--zustand-en-state)
+    - [Variablendeklarationen (en.: variable declarationa) vs. Zuweisungsausrücke (en.: Assignment expressions) vs. Ausdrücke (en.: expressions)](#variablendeklarationen-en-variable-declarationa-vs-zuweisungsausrücke-en-assignment-expressions-vs-ausdrücke-en-expressions)
+  - [Bada-Peng-Bada-Ping-Bada-Boom](#bada-peng-bada-ping-bada-boom)
+    - [In Javascript sind Funktionen sind Objekte](#in-javascript-sind-funktionen-sind-objekte)
+  - [Exercises](#exercises)
+    - [Kapitel 1](#kapitel-1-1)
+    - [Kapitel 2](#kapitel-2-1)
+
 ## Algemein
 
 Über Elemente, die in jeder modernen Sprache vorkommen:

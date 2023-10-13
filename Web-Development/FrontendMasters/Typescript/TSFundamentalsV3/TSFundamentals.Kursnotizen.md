@@ -3,6 +3,10 @@
 [Kurswebsite](https://www.typescript-training.com/course/fundamentals-v3/)
 [Kurs Repo](https://github.com/mike-north/ts-fundamentals-v3)
 
+- [TypeScript Fundamentals, v3 / Mike North, Stripe / Ende August 23'](#typescript-fundamentals-v3--mike-north-stripe--ende-august-23)
+  - [Takeaways](#takeaways)
+  - [Index Signaturen](#index-signaturen)
+
 ## Takeaways
 
 ## Index Signaturen

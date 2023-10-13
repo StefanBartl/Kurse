@@ -1,5 +1,14 @@
 # Complete Intro to Linux and the Command-Line / Brian Holt, Snowflake / Mitte September, 23`
 
+- [Complete Intro to Linux and the Command-Line / Brian Holt, Snowflake / Mitte September, 23\`](#complete-intro-to-linux-and-the-command-line--brian-holt-snowflake--mitte-september-23)
+	- [Takeaways](#takeaways)
+	- [Understanding Foreground and Background Processes in the Command Line](#understanding-foreground-and-background-processes-in-the-command-line)
+		- [Foreground Process](#foreground-process)
+		- [Example of a Background Process](#example-of-a-background-process)
+		- [Example of an Interactive Foreground Process](#example-of-an-interactive-foreground-process)
+		- [Example of Running a Script in the Background](#example-of-running-a-script-in-the-background)
+		- [Conclusion](#conclusion)
+
 ## Takeaways
 
 + *ctrl-r* starts using  history for reverse search in CLI.

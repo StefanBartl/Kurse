@@ -2,6 +2,31 @@
 
 [repo](https://github.com/nnja/advanced-git)
 
+- [GitInDepth / Nina Zakharenko ||| Mitte Aug, 2023](#gitindepth--nina-zakharenko--mitte-aug-2023)
+  - [Takeaways](#takeaways)
+  - [Git-Objekte](#git-objekte)
+  - [Packfiles \& HEAD](#packfiles--head)
+  - [Git-Stash](#git-stash)
+  - [cat-file](#cat-file)
+  - [Git Referenzen](#git-referenzen)
+    - [*branch*](#branch)
+    - [HEAD](#head)
+    - [Tags](#tags)
+  - [Git Kommandos](#git-kommandos)
+    - [Tags](#tags-1)
+    - [stash](#stash)
+    - [staging area](#staging-area)
+    - [*commit*](#commit)
+    - [log \& show](#log--show)
+    - [diff](#diff)
+    - [branch](#branch-1)
+    - [ammend \& rebase](#ammend--rebase)
+    - [merge vs rebase](#merge-vs-rebase)
+    - [clean](#clean)
+    - [checkout, reset, revert, ammend](#checkout-reset-revert-ammend)
+  - [CLI-Tool ***less*** Kommandos](#cli-tool-less-kommandos)
+  - [rerere](#rerere)
+
 ## Takeaways
 
 + Git teilt die Arbeitsumgebung in drei Bereiche: ***Working area*** (untracked files), ***Staging area*** (added files), ***Repository*** (*commit*ed files).

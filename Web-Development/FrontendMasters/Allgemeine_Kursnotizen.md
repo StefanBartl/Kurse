@@ -1,3 +1,7 @@
+- [Javascript](#javascript)
+- [Search Engine Optimation](#search-engine-optimation)
+- [Cheatsheet](#cheatsheet)
+- [Näher anschauen](#näher-anschauen)
 
 ## Javascript
 

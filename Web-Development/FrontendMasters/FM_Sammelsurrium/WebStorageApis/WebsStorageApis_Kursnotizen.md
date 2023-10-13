@@ -2,6 +2,22 @@
 
 [Kurswebsite](https://firtman.github.io/browser-storage/)
 
+- [Web Storage API's / Maximiliano Firtman (Selbständig) / Mitte August, 23\`](#web-storage-apis--maximiliano-firtman-selbständig--mitte-august-23)
+  - [Was können sie - Vorteile](#was-können-sie---vorteile)
+  - [Wie funktioniert es - Top-Level](#wie-funktioniert-es---top-level)
+  - [Origin](#origin)
+  - [API's für Browser Storage](#apis-für-browser-storage)
+    - [Cookies](#cookies)
+    - [Web Storage](#web-storage)
+      - [Session Storage](#session-storage)
+      - [Local Storage](#local-storage)
+    - [WebSQL](#websql)
+    - [Application-Cache](#application-cache)
+    - [IndexedDB](#indexeddb)
+    - [File and Directories](#file-and-directories)
+    - [Cache Storage](#cache-storage)
+    - [File System Access](#file-system-access)
+
 ## Was können sie - Vorteile
 
 + Sollte der Server offline sein oder der User keine Verbindung haben, kann die App trotztdem noch Funktionalitäten bieten

@@ -35,6 +35,3 @@ curl cht.sh/typescript/enum+string
 
 
 + ArrayBuffer, const a = Uint8Aray() => a[2] = 45, über console ausgeben! usw..
-
-
-

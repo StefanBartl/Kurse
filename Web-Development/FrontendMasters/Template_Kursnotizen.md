@@ -1,4 +1,4 @@
-# A Tour of Web Capabilities / Maximiliano Firtman, Producer, Author / Ende September 23
+# x / x / Mitte Oktober 23
 
 ## Takeaways
 
@@ -6,3 +6,4 @@
 +
 +
 
+## xxx

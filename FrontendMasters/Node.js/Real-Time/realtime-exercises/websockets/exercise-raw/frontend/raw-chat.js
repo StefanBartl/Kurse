@@ -20,6 +20,11 @@ async function postNewMsg(user, text) {
  *
  */
 
+const RedCircle = 'U+1F534'
+const YellowCircle ='U+1F7E1'
+const GreenCircle = 'U+1F7E2'
+
+
 function render() {
   const html = allChat.map(({ user, text }) => template(user, text));
   msgs.innerHTML = html.join("\n");

@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build ARM Assembly",
+            "type": "shell",
+            "command": "arm-as",  // Hier den Namen deines Assemblers eintragen
+            "args": ["-o", "output.o", "proc.asm"],  // Passe die Argumente an
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

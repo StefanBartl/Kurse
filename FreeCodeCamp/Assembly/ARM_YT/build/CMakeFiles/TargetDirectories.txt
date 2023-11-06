@@ -1,0 +1,3 @@
+C:/Development/BauhausCoder/Kurse/FreeCodeCamp/Assembly/ARM_YT/build/CMakeFiles/MeinProgramm.dir
+C:/Development/BauhausCoder/Kurse/FreeCodeCamp/Assembly/ARM_YT/build/CMakeFiles/edit_cache.dir
+C:/Development/BauhausCoder/Kurse/FreeCodeCamp/Assembly/ARM_YT/build/CMakeFiles/rebuild_cache.dir

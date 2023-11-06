@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Development/BauhausCoder/Kurse/FreeCodeCamp/Assembly/ARM_YT/build",
+  "command": "\"C:\\\\ProgramData\\\\chocolatey\\\\lib\\\\gcc-arm-embedded\\\\tools\\\\gcc-arm-none-eabi-10.3-2021.10\\\\bin\\\\arm-none-eabi-as.exe\"   -g -o CMakeFiles/MeinProgramm.dir/proc.asm.obj -c C:/Development/BauhausCoder/Kurse/FreeCodeCamp/Assembly/ARM_YT/proc.asm",
+  "file": "C:/Development/BauhausCoder/Kurse/FreeCodeCamp/Assembly/ARM_YT/proc.asm",
+  "output": "CMakeFiles/MeinProgramm.dir/proc.asm.obj"
+}
+]

@@ -1,4 +1,4 @@
-# x / x / Mitte Oktober 23
+# Docker / x / Mitte Oktober 23
 
 [Course Website](https://btholt.github.io/complete-intro-to-containers)
 [Course Repo](https://github.com/btholt/complete-intro-to-containers)

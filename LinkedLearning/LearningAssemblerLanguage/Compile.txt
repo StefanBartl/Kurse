@@ -1,0 +1,28 @@
+## Kompilieren, Linken & Ausführen mit MASM32 - x86 Assembler WINDOWS
+
+**1. Assemblieren der Quellcode-Datei:**
+`C:\masm32\bin\ml /c /coff main.asm`
+Hier wird die Quellcode-Datei "main.asm" mit dem MASM-Assembler kompiliert. Die Optionen "/c" geben an, dass nur eine Objektdatei erstellt werden soll, und "/coff" gibt das Dateiformat für die Objektdatei an (Common Object File Format). Dieser Schritt erzeugt die Objektdatei "main.obj".
+
+**2. Linken der Objektdatei:**
+`C:\masm32\bin\link /subsystem:console main.obj`
+Hier wird die zuvor erstellte Objektdatei "main.obj" gelinkt, um ein ausführbares Programm zu erstellen. Die Option "/subsystem:console" gibt an, dass ein Konsolenprogramm erstellt werden soll. Dieser Schritt erzeugt die ausführbare Datei "main.exe".
+
+**3. Überprüfen der Dateien:**
+`dir main*`
+Mit diesem Befehl wird überprüft, ob die Dateien "main.asm", "main.obj" und "main.exe" im aktuellen Verzeichnis existieren. Dies ist eine gute Methode, um sicherzustellen, dass die Assemblierung und das Linken erfolgreich waren und die Dateien erstellt wurden.
+
+**4. Ausführen des Programms:**
+`.\main.exe`
+Hier wird das erstellte ausführbare Programm "main.exe" in der Konsolen-Umgebung ausgeführt. Dies führt den von dir in der Assembly-Datei "main.asm" geschriebenen Code aus und gibt die Ausgabe auf der Konsole aus.
+
+```assembler
+include C:\masm32\include\masm32rt.inc
+.data
+Hello db "Hello World",0
+.code
+start:
+    invoke StdOut, addr Hello
+    invoke ExitProcess,0
+end start
+```

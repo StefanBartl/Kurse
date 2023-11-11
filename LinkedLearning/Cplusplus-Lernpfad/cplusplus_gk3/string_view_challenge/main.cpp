@@ -1,15 +1,15 @@
 #include <iostream>
 #include <string_view>
 
-const char *name = "Max Mustermann";
 
 int main() {
 
-    // TODO: Eine Implementierung schreiben, bei der mit Hilfe von string_view
-    // Vor- und Nachname getrennt angezeigt werden.
+    const char *name = "Max Mustermann";
+    std::string_view data(name);
+    const auto sepPos = data.find(" ");
 
-    //std::cout << "First Name: " << ... << std::endl;
-    //std::cout << "Second Name: " << ... << std::endl;
+    std::cout << "First Name: " << data.substr(0, sepPos) << std::endl;
+    std::cout << "Second Name: " << data.substr(sepPos+1) << std::endl;
 
     return 0;
 }

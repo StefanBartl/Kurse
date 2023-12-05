@@ -1,0 +1,1301 @@
+/*#region 1) general */
+
+/* futura: font-family: futura-pt,sans-serif; */
+
+:root {
+  /*  ==================  
+?        ===  Colour-Palette  ===
+          ==================  */
+
+  --prime-blueviolett: hsl(238, 56%, 19%);
+  --prime-darkgrey: hsl(330, 2%, 17%);
+  --prime-green: hsl(95, 63%, 36%);
+  --prime-yellow: hsl(43, 100%, 50%);
+  --prime-manner: hsl(10, 60%, 80%);
+  --prime-lightgrey: hsl(71, 13%, 67%);
+  --prime-pink: hsl(330, 100%, 50%);
+  --prime-pinkviolett: hsl(300, 100%, 50%);
+
+  --base-colour: hsl(201, 79%, 46%);
+  --main-black: hsl(0, 0%, 0%);
+  --main-red: hsl(0, 100%, 50%);
+
+  --base-border: hsl(0, 0%, 100%);
+  --gameboard: hsl(240, 100%, 49%);
+  --cornsilk: hsl(48, 100%, 93%);
+  --top-header: hsl(39, 77%, 83%);
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* #region resets */
+
+/* box-sizing */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+/* margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+picture {
+  margin: 0;
+}
+
+/* set up the body*/
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who turned them off*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* #endregion */
+
+/*#region fonts */
+
+@import url("https://use.typekit.net/izw3hmc.css");
+
+/*#endregion */
+
+/*#endregion */
+
+/* #region 2) layout */
+
+/*  =================  
+?        ===  Basis Layout  ===
+          =================  */
+
+body,
+header,
+.sidebars,
+#wrapper__choosingCPU,
+.naming__span {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background-color: var(--base-colour);
+  color: white;
+  font-family: futura-pt,sans-serif;
+}
+
+header {
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 1vh var(--base-border);
+  border-radius: 1rem;
+  min-height: 20vh;
+}
+
+#section__main {
+  display: grid;
+  grid: auto / 31% auto 31%;
+  grid-template-areas: "leftSide gameboard rightSide";
+}
+
+/*  ==============  
+?        ===  Sidebars  ===
+          ==============  */
+
+.sidebars {
+  grid-area: sidebar;
+  margin-top: 5vh;
+  min-width: 100%;
+  gap: 1rem;
+}
+
+#wrapper__leftSidebar {
+  grid-area: leftSide;
+  align-items: center;
+}
+
+#wrapper__choosingCPU {
+  min-width: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+#wrapper__rightSidebar {
+  grid-area: rightSide;
+  align-items: center;
+  z-index: 1;
+}
+
+.naming__span {
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.name_svgs {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+  filter: invert(1);
+}
+
+#choosing_cpu_headline {
+  font-size: large;
+}
+
+/*  ================  
+?        ===  Gameboard  ===
+          ================  */
+
+.gameboard {
+  grid-area: gameboard;
+  display: flex;
+  background-color: var(--gameboard);
+  border: solid 1rem var(--gameboard);
+  border-top: dashed 0.1rem var(--gameboard);
+  border-radius: 2rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+}
+
+.gameboard[data-ingame="yes"] {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(40vw, 60%);
+}
+
+.gameboard[data-ingame="gameend"] {
+  margin-block: 2rem;
+}
+
+.gameboard[data-ingame="yes"][data-device="smart"] {
+  top: 23%;
+  min-width: 100vw;
+}
+
+/* #endregion */
+
+/* #region 3) gameboard */
+
+.columns {
+  width: 100%;
+}
+
+.topCells {
+  outline: none;
+  aspect-ratio: 1/1;
+  border-left: dashed 0.15rem var(--base-border);
+  background-color: var(--base-colour);
+  cursor: pointer;
+}
+
+/* If column is full lock the top-cell,...*/
+.topCells[data-columnfull="yes"] {
+  border-top: solid 2px var(--gameboard);
+  pointer-events: none;
+}
+
+#ID_C1R0 {
+  border-left: none;
+}
+
+.cells {
+  aspect-ratio: 1 / 1;
+  border: solid 0.2rem var(--gameboard);
+  border-radius: 10rem;
+  background-color: var(--base-border);
+  opacity: 0.7;
+}
+
+/*  ==========================  
+?        ===  Active player notification  ===
+          ==========================  */
+
+.Class_Left_Pos {
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  text-align: center;
+  font-size: large;
+}
+
+.Class_Right_Pos {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+}
+
+.Class_Thinking {
+  text-align: center;
+  font-size: 3rem;
+}
+
+/*  ============  
+?        ===  Coins  ===
+          ============  */
+
+.coin__red,
+.coin__yellow,
+.placedCoin__1,
+.placedCoin__2 {
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.coin__red,
+.coin__yellow {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.coin__yellow {
+  background-image: url("../graphics/Coins/yellow.png");
+}
+
+.coin__red {
+  background-image: url("../graphics/Coins/red.png");
+}
+
+.placedCoin__1 {
+  background-image: url("../graphics/Coins/yellow.png");
+}
+
+.placedCoin__2 {
+  background-image: url("../graphics/Coins/red.png");
+}
+
+#h__turnDiv {
+  width: 10rem;
+  border: dashed 0.3rem var(--base-border);
+  padding: 1rem;
+}
+
+/* #endregion */
+
+/* #region 4) typography*/
+
+#headline {
+  font-size: 5rem;
+  text-shadow: 1rem 1rem 1rem black;
+}
+
+#p__headline {
+  margin-top: -.5rem;
+  font-weight: bold;
+}
+
+.sidebars > h2,
+h3 {
+  text-shadow: 0 0 1rem black;
+}
+
+.sidebars h2 {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+}
+
+#choosing_cpu_headline {
+  font-size: xx-large;
+}
+
+/* #endregion */
+
+/* #region 5) settings menu */
+
+/*  ======================  
+?        ===  Settings-Menu (SM) ===
+          ======================  */
+
+#menu{
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  width: 1ch;
+}
+
+#section__settings_menu[data-device="default"] {
+  position: absolute;
+  top: 5vh;
+  right: 0;
+  height: 90vh;
+  width: clamp(270px, 20%, 25vw);
+}
+
+#settings_span[data-device="default"] {
+  position: relative;
+  top: 0;
+  right: -98%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: 90vh;
+  max-width: 100%;
+  z-index: 1;
+  justify-content: center;
+  overflow: auto;
+  background-color: var(--base-border);
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  box-shadow: 0rem 0rem 2rem white;
+  color: var(--main-black);
+  text-align: center;
+  font-size: large;
+}
+
+#settings_span > div,
+h2,
+h3 {
+  min-width: 100%;
+}
+
+#settings_span h2 {
+  color: red;
+}
+
+/*  ================  
+?        ===  SM Content  ===
+          ================  */
+
+#settings_span__gameboard,
+#span_settings_mechanics,
+#container__sound,
+#div__aniToggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#settings_span__gameboard h3 {
+  height: 2rem;
+}
+
+#container_settings_gameboard_sizing {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  margin-inline: 1rem;
+}
+
+#container_settings_gameboard_sizing input {
+  width: 80%;
+}
+
+#container_settings_gameboard_sizing button {
+  width: 80%;
+  height: 2rem;
+}
+
+#container_colour,
+#container__language,
+#container__sound {
+  margin-bottom: 0.5rem;
+}
+
+#container__language {
+  > select {
+    height: fit-content;
+    width: fit-content;
+  }
+}
+
+#container_colour {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* section game mechanics */
+#container__toggleColour {
+  height: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#colour_slider {
+  background-color: yellow;
+  height: 100%;
+  width: 50%;
+}
+
+#button__toggle {
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 0 0.5rem black;
+  width: 1rem;
+  aspect-ratio: 1/1;
+  margin-block: 1px;
+  border-radius: 50%;
+  transition: all 2s;
+}
+
+#button__toggle:hover {
+  background-color: var(--base-colour);
+}
+
+.toggle__colour {
+  transform: translateX(2.8rem);
+}
+
+#select__language {
+  cursor: pointer;
+  width: 80%;
+  height: 1.5rem;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+/* section stats */
+#container__stats {
+  display: grid;
+  grid: 2rem auto/ 1fr 1fr;
+  grid-template-areas:
+    "h h h"
+    "e . n";
+  min-width: 100%;
+}
+
+#h__stats {
+  grid-area: h;
+}
+
+#h__stats_First_Wrapper {
+  grid-area: e;
+}
+#h__stats_Second_Wrapper {
+  grid-area: n;
+}
+
+details[open] p {
+  animation: animateDown 0.2s linear forwards;
+}
+
+@keyframes animateDown {
+  0% {
+    opacity: 0;
+    transform: translatey(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+  }
+}
+
+/* section bottom */
+#container__contacts,
+#container__credits,
+#container__delete {
+  margin-block: 0.5rem;
+}
+
+/*  ===================  
+?        ===  SM-typography  ===
+          ===================  */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.2rem;
+}
+
+#info_h,
+#h__language,
+#h__contact,
+#h__credits {
+  cursor: pointer;
+}
+
+/*  ===============  
+?        ===  SM-hover  ===
+          ===============  */
+
+#info_h:hover,
+#wrapper__stats_easy :hover,
+#wrapper__stats_normal :hover,
+#h__contact:hover,
+#h__credits:hover {
+  color: red;
+}
+
+#settings_span__gameboard[data-ingame="yes"] {
+  pointer-events: none;
+  color: black;
+  background-color: lightgrey;
+  opacity: 0.3;
+}
+
+/* #endregion */
+
+/* #region 6) game screen*/
+
+/*  =======================  
+?        ===  Win counters & tallys  ===
+          =======================  */
+
+#div__wonGames_P1 {
+  position: absolute;
+  top: 0;
+  left: 3rem;
+  display: flex;
+  margin: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+  font-size: large;
+}
+
+#div__wonGames_P2 {
+  position: absolute;
+  top: 0;
+  right: 3rem;
+  display: flex;
+  margin: 2rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: end;
+  font-size: large;
+}
+
+#div__drawGames {
+  position: absolute;
+  margin-top: 2rem;
+  top: 0;
+  right: 50%;
+  transform: translateX(+50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: large;
+}
+#div__wonGames_P1[data-device="smart"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: small;
+}
+
+#div__wonGames_P2[data-device="smart"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: small;
+}
+
+#div__drawGames[data-device="smart"] {
+  position: absolute;
+  font-size: small;
+}
+
+.img__tallys {
+  filter: invert(1);
+  height: 2rem;
+}
+
+/* #endregion*/
+
+/*#region 7) game-end screen */
+
+#section__main[data-gameend="yes"],
+#section__main[data-canvasend="yes"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  gap: 1rem;
+  font-size: x-large;
+  align-items: center;
+  text-align: center;
+}
+
+#section__main[data-gameend="yes"] > *,
+#section__main[data-canvasend="yes"] > * {
+  flex: 1;
+}
+
+#wrapper__gameboard[data-gameend="yes"],
+#wrapper__gameboard[data-canvasend="yes"] {
+  flex-grow: 3;
+  aspect-ratio: 1/1;
+}
+
+#h__gameEnd {
+  margin-top: 3%;
+}
+
+/*  ===================  
+?        ===  firework canvas  ===
+          =================== */
+
+.div__canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* is attached to top-cells if the firework canvas is fired to give them a better look on the black background */
+.topCellsCanvas {
+  background-color: black;
+}
+
+/* #endregion */
+
+/* #region 8) inputs, buttons, dropdowns, etc...  */
+
+/*  =============  
+?        ===  buttons  ===
+          =============  */
+
+button {
+  cursor: pointer;
+  box-shadow: 0 0 1rem black;
+  border: none;
+  border-radius: .5rem;
+}
+
+
+
+#button__start {
+  margin-top: 1rem;
+  font-size: x-large;
+  padding: .5rem;
+}
+
+#button__newGame,
+#button__startingScreen {
+  min-width: 12.5vw;
+  min-height: 7.5vh;
+  margin: 1rem;
+}
+
+#reset__easy:hover,
+#reset__normal:hover {
+  color: white;
+}
+
+/*  ===============  
+?        ===  inputs  ===
+          ===============  */
+
+input[type="text"] {
+  width: fit-content;
+  padding: .5rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+}
+
+input[type="number"] {
+  background-color: lightgrey;
+  border: none;
+  text-align: center;
+}
+
+input[type="checkbox"] {
+  height: 2rem;
+  aspect-ratio: 1/1;
+}
+
+/* get away with the default red borders on input */
+input {
+  box-shadow: none;
+  border: 0;
+  outline: none;
+  border-radius: .5rem;
+}
+
+input:focus:invalid {
+  box-shadow: none;
+  border: 1px solid white !important;
+  outline: none;
+}
+
+/*  ================  
+?        ===  select  ===
+          ================  */
+
+select {
+  text-align-last: center;
+  text-align: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
+  cursor: pointer;
+  font-size: large;
+  padding: .5rem;
+  border-radius: .5rem;
+}
+
+/* left sidebar start game content */
+
+#select__choosing_cpu {
+  min-height: 1rem;
+}
+
+#wrapper__choosingCPU h3 {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+  margin-top: 1rem;
+}
+
+/*  ===============  
+?        ===  summarys  ===
+          ===============  */
+
+.summary__details {
+  margin-top: 1rem;
+}
+
+.summary__details :hover {
+  cursor: pointer;
+}
+
+.span_stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+}
+
+/* #endregion */
+
+/* #region 9) animations & transitions */
+
+/*#region choosing coin animations */
+
+/*  ==================  
+?        === Choosing Coin  ===
+          ==================  */
+
+.Class_ChoosingAnimation_Coin_1 {
+  background-image: url("../graphics/Coins/yellow.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  animation: choosing_Coin_1_Animation 1s infinite alternate;
+}
+
+@keyframes choosing_Coin_1_Animation {
+  from {
+    background-position: center;
+    background-size: 80%;
+  }
+
+  to {
+    background-position: center;
+    background-size: 50%;
+  }
+}
+
+.Class_ChoosingAnimation_Coin_2 {
+  background-image: url("../graphics/Coins/red.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  animation: choosing_Coin_2_Animation 1s infinite alternate;
+}
+
+@keyframes choosing_Coin_2_Animation {
+  from {
+    background-position: center;
+    background-size: 80%;
+  }
+
+  to {
+    background-position: center;
+    background-size: 50%;
+  }
+}
+/*#endregion */
+
+/*#region save name animations */
+
+/*  ===============  
+?        ===  save name  ===
+          ===============  */
+
+#saveNameP1 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+#saveNameP2 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.Class_Smooth_In {
+  animation: SmoothInAnimation 0.3s ease-in;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes SmoothInAnimation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.Class_Smooth_Out {
+  animation: SmoothOutAnimation 0.3s ease-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes SmoothOutAnimation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+.Class_Buttons_Add_Hover_Animations_1 {
+  cursor: pointer;
+  animation: Button_1_Add_Animation 0.1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes Button_1_Add_Animation {
+  from {
+    filter: invert(1);
+    transform: rotate(0deg);
+  }
+  to {
+    filter: brightness(0) saturate(100%) invert(91%) sepia(80%) saturate(5882%)
+      hue-rotate(354deg) brightness(107%) contrast(104%);
+    transform: rotate(90deg);
+  }
+}
+
+.Class_Buttons_Remove_Hover_Animations_1 {
+  animation: Button_1_Remove_Animation 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes Button_1_Remove_Animation {
+  from {
+    filter: brightness(0) saturate(100%) invert(91%) sepia(80%) saturate(5882%)
+      hue-rotate(354deg) brightness(107%) contrast(104%);
+    transform: rotate(90deg);
+  }
+  to {
+    filter: invert(1);
+    transform: rotate(0deg);
+  }
+}
+
+.Class_Buttons_Add_Hover_Animations_2 {
+  cursor: pointer;
+  animation: Button_2_Add_Animation 0.1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes Button_2_Add_Animation {
+  from {
+    filter: invert(1);
+    transform: rotate(0deg);
+  }
+  to {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(91%) saturate(7221%)
+      hue-rotate(359deg) brightness(122%) contrast(119%);
+    transform: rotate(-90deg);
+  }
+}
+
+.Class_Buttons_Remove_Hover_Animations_2 {
+  animation: Button_2_Remove_Animation 0.5s;
+  animation-fill-mode: forwards;
+}
+@keyframes Button_2_Remove_Animation {
+  from {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(91%) saturate(7221%)
+      hue-rotate(359deg) brightness(122%) contrast(119%);
+    transform: rotate(-90deg);
+  }
+  to {
+    filter: invert(1);
+    transform: rotate(0deg);
+  }
+}
+/*#endregion*/
+
+/*#region settings menu animations */
+
+/*  ====================  
+?        ===  coloured element  ===
+          ====================  */
+.colourAnimation {
+  animation: colouredBoxAnimation infinite alternate-reverse 10s;
+}
+
+@keyframes colouredBoxAnimation {
+  from {
+    box-shadow: 0rem 0rem 1rem white;
+  }
+  25% {
+    box-shadow: 0rem 0rem 1rem red;
+  }
+
+  50% {
+    box-shadow: 0rem 0rem 1rem green;
+  }
+  75% {
+    box-shadow: 0rem 0rem 1rem blue;
+  }
+  to {
+    box-shadow: 0rem 0rem 1rem orangered;
+  }
+}
+
+/*  ==================  
+?        ===  settings-menu  ===
+          ==================  */
+
+.Class_Show_Settings {
+  animation: Show_Settings_Animation 0.3s ease-in;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes Show_Settings_Animation {
+  from {
+    right: -98%;
+    box-shadow: 0rem 0rem 2rem white;
+  }
+  to {
+    right: 0;
+    box-shadow: 0rem 0rem 2rem black;
+  }
+}
+
+.Class_Hide_Settings {
+  animation: Hide_Settings_Animation 0.3s ease-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+@keyframes Hide_Settings_Animation {
+  from {
+    right: 0vw;
+    box-shadow: 0rem 0rem 2rem black;
+  }
+  to {
+    right: -98%;
+    box-shadow: 0rem 0rem 2rem white;
+  }
+}
+
+/*#endregion */
+
+/*#region game-end animations*/
+
+.animation__GameEnd {
+  animation: End_Animation 2s ease-in;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+@keyframes End_Animation {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/*#endregion*/
+
+/*#region coloured text animtion */
+
+.colouredTextAnimation {
+  animation: headlineAnimation 30s infinite alternate-reverse;
+}
+
+@keyframes headlineAnimation {
+  from {
+    color: white;
+  }
+  33% {
+    color: red;
+  }
+  66% {
+    color: yellow;
+  }
+  to {
+    color: white;
+  }
+}
+
+/*#endregion*/
+
+/* #endregion */
+
+/* #region 10) helpers */
+
+.Class_Invisible {
+  visibility: hidden;
+}
+
+.Class_Full_Column {
+  pointer-events: none;
+}
+
+/*  ==================  
+?        ===  New windows  ===
+          ==================  */
+
+.Class_Window {
+  max-height: 70vh;
+  width: 50vw;
+  z-index: 10;
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  display: grid;
+  grid: 1rem auto 1rem / 1fr;
+  justify-items: center;
+  text-align: center;
+  background-color: grey;
+  border: solid 1px black;
+  font-size: xx-small;
+  color: white;
+  text-align: center;
+}
+
+.Class_Inner_Window {
+  width: calc(100% - 2rem);
+  display: grid;
+  grid: 2rem auto 4rem / 1fr;
+  max-block-size: 65vh;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border: solid 1px black;
+  font-size: small;
+}
+
+.Class_Inner_Window h3 {
+  color: red;
+}
+
+.Class_Inner_Window p {
+  align-self: center;
+  margin-top: 2rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.Class_Inner_Window input {
+  height: 2rem;
+  width: 60%;
+  background-color: darkgray;
+  text-align: center;
+  border: solid 1px black;
+}
+
+.Class_Buttons_Div {
+  display: flex;
+  gap: 1rem;
+  height: 2rem;
+}
+
+.Class_Inner_Window button {
+  width: 5rem;
+  height: 2rem;
+  border: solid 1px black;
+}
+/* #endregion */
+
+/*#region 11) media queries */
+
+/*#region smartphones and other small devices */
+@media (max-width: 767.98px) {
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: xx-large;
+  }
+
+  header p {
+    font-size: large;
+  }
+
+  #section__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebars {
+    margin-top: 0;
+    border: none;
+    align-items: center;
+  }
+
+  .naming__span {
+    display: inline-block;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .name_svgs {
+    margin-block: 1rem;
+    position: relative;
+    left: 35%;
+  }
+
+  #wrapper__choosingCPU {
+    border: none;
+  }
+
+  #div__turnPlayers {
+    z-index: -1;
+  }
+
+  .Class_Left_Pos {
+    top: 0;
+  }
+  .Class_Right_Pos {
+    top: 0;
+  }
+
+  #button__start {
+    min-width: 30%;
+    margin-bottom: 5%;
+  }
+
+  #settings_span {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    max-width: 100%;
+    justify-content: center;
+    overflow: auto;
+    background-color: var(--base-border);
+    box-shadow: 0rem 0rem 2rem white;
+    color: var(--main-black);
+    text-align: center;
+    font-size: large;
+  }
+
+  #span_settings_mechanics,
+  #settings_span__gameboard {
+    min-width: 100%;
+  }
+
+  #wrapper__gameboard[data-ingame="yes"] {
+    max-width: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  input:hover,
+  button:hover,
+  select:hover {
+    background-color: var(--base-border);
+    color: black;
+    box-shadow: none;
+  }
+
+  /* mobile game end screen */
+
+  #button__newGame {
+    min-width: 40%;
+  }
+
+  #button__startingScreen {
+    min-width: 40%;
+  }
+
+  #button__gameEnd {
+    margin-block: 2rem;
+  }
+
+  /* Win Marks */
+  #div__wonGames {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 3rem;
+    min-height: 2rem;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  #div__wonGames_P2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-width: 3rem;
+    min-height: 2rem;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  /*#endregion*/
+}
+
+/* #endregion*/

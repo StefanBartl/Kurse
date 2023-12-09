@@ -1,3 +1,0 @@
-MASM - Microsoft Assembler
-https://x64dbg.com/
-https://godevtool.com/

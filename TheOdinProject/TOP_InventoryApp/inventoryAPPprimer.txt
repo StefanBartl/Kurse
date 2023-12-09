@@ -1,0 +1,29 @@
+E-Guitar inventory shop
+
+
+Database Models:
+
+Categories:
+    E-Guitars: 
+        description, url
+    Amps:
+         description, url
+    Stuff:
+         description, url
+    Sale:
+         description, url
+
+Items:
+    Guitar:
+        name, manufactore, detail, price, stock, category, url
+
+    Amps:
+        name, manufactore, detail, price, stock, category, url
+
+    Stuff:
+        name, manufactore, detail, price, stock, category, url
+
+        mongoDB connect:
+        mongodb+srv://wkdvie:020290Ab@cluster0.2jqblmj.mongodb.net/?retryWrites=true&w=majority
+        populate url:
+        node populatedb mongodb+srv://wkdvie:020290Ab@cluster0.isesj.mongodb.net/?retryWrites=true&w=majority

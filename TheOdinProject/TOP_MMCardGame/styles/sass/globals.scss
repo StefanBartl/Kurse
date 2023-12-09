@@ -1,0 +1,119 @@
+@import './ColorsAndDesign.scss';
+
+
+
+/*#region Resets */
+
+html,
+.page-container {
+
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
+
+/* box-sizing */
+*,
+*::before,
+*::after {
+
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+
+}
+
+a {
+
+  color: inherit;
+  text-decoration: none;
+
+}
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+/* margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+picture {
+
+  margin: 0;
+
+}
+
+/* make images easier to work with */
+img,
+picture {
+
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
+  
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  
+  font: inherit;
+
+}
+
+/* remove animations for people who turned them off*/
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+
+  }
+
+}
+
+body {
+
+  background-color: $wkd-lightgrey;
+
+}
+
+/*#endregion */
+
+
+
+.app-container{
+
+  color: $wkd-black;
+  background-color: $wkd-lightgrey;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  font-style: normal; 
+  font-family: $font-futura;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  
+
+};                 

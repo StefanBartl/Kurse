@@ -1,0 +1,503 @@
+/* #region Table of Content */
+/*    
+! Tic-Tac-Toe Main-CSS-Stylesheet
+? powered by
+! Stefan Bartl
+! (WKDSteVIE / WKDMinerva)
+? Nov  2022                                                                                                                                                                        
+                                                                                                                                                                                                
+! Table of Content
+? -) CSS-Setup                                                                                                
+? -) General-Design
+? -) Markers
+? -) Animations
+
+todo - CSS - What a wonderful & tricky language !                                                                                                                                                                                                                                                                                                                                                                 */
+
+/*#endregion*/
+
+
+
+/*#region  CSS-Setup */
+
+/*? ===  font(s) === */
+
+/* futura: font-family: futura-pt,sans-serif; */
+@import url("https://use.typekit.net/izw3hmc.css");
+
+@font-face {
+    font-family: 'Fira Code';
+    src: url('./fonts/Fira_Code_v6.2/woff2/FiraCode-Medium.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Orange Juice';
+    src: url('./fonts/orange-juice/orange\ juice\ 2.0.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* #region setup & themes  */
+
+:root {
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  --font-futura: futura-pt,sans-serif;
+  font-weight: 400;
+  font-style: normal; 
+
+  --fs-400: 1rem;
+  --fs-500: 1.125rem;
+  --fs-600: 1.375rem;
+  --fs-700: 2rem;
+
+  /* ! test that out if it is working */
+  @media (min-width: 45em){
+  --fs-400: 1.125rem;
+  --fs-500: 1.375rem;
+  --fs-600: 2.75rem;
+  --fs-700: 4.125rem;
+  }
+
+  /* ==================  
+?    ===  Colour-Palette  ===
+.     ================== */
+  --wkd-black: rgb(0, 0, 0);
+  --wkd-darkgrey: rgb(29, 29, 29);
+  --wkd-midgrey: rgb(61, 61, 61);
+  --wkd-grey: rgb(107, 106, 106);
+  --wkd-lightgrey: rgb(178, 182, 160);
+  --wkd-white: rgb(255, 255, 255);
+  --wkd-red: rgb(255, 0, 0);
+  --wkd-green: rgb(82, 150, 34);
+  --wkd-intense-blue: rgb(0, 0, 250);
+  --wkd-pastell-blue: rgb(25, 145, 210);
+  --wkd-torquise: rgb(8, 253, 216);
+  --wkd-blueviolett: rgb(21, 23, 76);
+  --wkd-yellow: rgb(255, 255, 0);
+  --wkd-yellow-dark: rgb(255, 183, 0);
+  --wkd-orange: rgb(255, 102, 0); /* filter: brightness(0) saturate(100%) invert(44%) sepia(24%) saturate(4068%) hue-rotate(1deg) brightness(98%) contrast(106%); */
+  --wkd-grapefruit: rgb(239, 95, 87);
+  --wkd-pink: rgb(255, 0, 128);
+  --wkd-pinkviolett: rgb(255, 0, 255);  /* filter: brightness(0) saturate(100%) invert(19%) sepia(63%) saturate(4179%) hue-rotate(293deg) brightness(123%) contrast(136%); */
+  --wkd-darkviolett: rgb(102, 0, 102); 
+  --wkd-manner: rgb(235, 184, 173);
+}
+
+:root.theme_prime{
+
+/*? === design === */
+--main-colour: var(--wkd-pastell-blue);
+--counter-colour: var(--wkd-orange);
+--design-strokes-colour: var(--wkd-grey);
+--design-strokes-accent-colour: var(--wkd-pinkviolett);
+--shadows: var(--wkd-white);
+
+/*? === text === */
+--text-optimal-width: clamp(45ch, 50%, 75ch);
+--text-main-colour: var(--wkd-white);
+--link-hover-color: var(--wkd-red);
+}
+
+/* #endregion */
+
+/* #region resets */
+
+/* box-sizing */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+/* margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+figure,
+picture {
+  margin: 0;
+}
+
+/* set up the body*/
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who turned them off*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* #endregion */
+
+/* #endregion */
+
+
+/* #region General-Design */
+
+body {
+  background-color: var(--main-colour);
+  color: var(--text-main-colour);
+  font-family: var(--font-futura);
+  color: snow;
+  font-family: "Fira Code", arial sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+header{
+    display: flex;
+    height: 15vh;
+    margin-bottom: 2vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ClassMainWrapper{
+    display: grid;
+    grid-template-areas: 
+      "left gameboard right"
+    ;
+    flex-wrap: wrap;
+    gap: 2%;
+    justify-content: center;
+    text-align: center;
+}
+
+.ClassPlayerWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--main-colour);
+    gap: 2%;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#PlayerOneWrapperDiv {
+    grid-area: left;
+    gap: 3vh;
+}
+
+#PlayerTwoWrapperDiv {
+    grid-area: right;
+    display: flex;
+}
+
+.ClassSidebar{
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    margin: 3%;
+}
+
+                /* Gameboard style */
+.ClassGameboard{
+    grid-area: gameboard;
+    display: flex;
+    width: 70vw;
+    height: 75vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3%;
+    box-shadow: inset 0em 0em 2em var(--wkd-black);
+    border-radius: 5%;
+    background-color: var(--wkd-white);
+    padding-top: 2%;
+    margin-bottom: -1%;
+    outline: solid 1px var(--main-colour);
+}
+
+.ClassGameboard:hover{
+    outline: solid 5px var(--counter-colour);
+}
+
+@font-face {
+    font-family: 'CarterOne';
+    src: url(/fonts/Carter_One/CarterOne-Regular.ttf) format('ttf');
+   }
+
+.ClassGameboardCells{
+    height: 26%;
+    width: 26%;
+    margin: 10px;
+    background-color: rgb(25, 146, 212, 20%);
+    border-radius: 10%;
+    box-shadow: 0em 2em 2em var(--wkd-black);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'CarterOne';
+    font-size: 5rem;
+    font-weight: bolder;
+    transition: background-color 1s ease-in-out;
+}
+
+.ClassGameboardCells:hover{
+    background-color: var(--counter-colour);
+}
+
+/* Backgrounds if cell is played*/
+.ClassMarkXPlayed{
+    transition: background-color 1s ease-in-out;
+    background-color: green;
+}
+
+.ClassMarkOPlayed{
+    transition: background-color 1s ease-in-out;
+    background-color: red;
+}
+
+#dot {
+    max-width: 15vw;
+}
+
+                /* Game won screen & Countdown */
+.ClassWon{
+    min-width: 100vw;
+    min-height: 100vh;
+    margin-top: -3%;
+    background-color: chocolate;
+    color: white;
+    padding-top: 15%;
+    text-align: center;
+}
+
+.ClassWinButton {
+    height: 5vh;
+    width: 10vw;
+    margin-top: 10%;
+    transition: all 1s ease-in-out;
+}
+
+.ClassWinButton:hover {
+    height: 10vh;
+    width: 20vw;
+    background-color: #1992d4;
+    color: white;
+    text-shadow: 2em 2em 2em black;
+    font-size: x-large;
+}
+
+.Countdown {
+    width: 60vw;
+    height: 50vh;
+    border: dotted 5% #ffff00;
+    background-color: #1992d4;
+    color: white;
+    margin-top: 15%;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin-left: 15vw;
+}
+
+#gameInfoTextP {
+    font-size: small;
+    cursor: help;
+    transition: all .1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#infoIcon {
+    aspect-ratio: 1/1;
+    width: 3vw;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+    margin-top: 1vh;
+}
+
+#gameInfoTextP:hover #infoIcon {
+    filter: brightness(0) saturate(100%) invert(44%) sepia(24%) saturate(4068%) hue-rotate(1deg) brightness(98%) contrast(106%);
+    transform: scale(1.3);
+}
+
+.returnBtn {
+    position: absolute;
+    top: 3vh;
+    left: 5vh;
+    height: 5vh;
+    width: 10vw;
+    border-top-left-radius: 70%;
+    border-bottom-left-radius: 70%;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border: none;
+    background-color: snow;
+    color: var(--main-colour);
+    font-size: 1.5rem;
+    font-weight: bolder;
+    transition: background-color .5s ease-in-out;   
+}
+
+.returnBtn:hover {
+    background-color: var(--counter-colour);
+    color: snow;
+}
+
+.ClassInfoboxIcon {
+    min-width: 15px;
+    min-height: 15px;
+    filter: invert(100%);
+}
+
+.ClassInfoboxIcon:hover {
+    filter: invert(0%);
+    cursor: help;
+}
+
+input,
+select,
+#StartButton {
+    border-radius: 2rem;
+}
+
+select {
+    height: 5vh;
+    width: 10vw;
+    color: black;
+    outline: solid 1px #1992d4;
+    border: none;
+    transition: all .1s ease-in-out;
+}
+
+
+select:hover,
+#StartButton:hover {
+    cursor: pointer;
+}
+
+#OneNameInput,
+#TwoNameInput {
+    color: black;
+    width: 10vw;
+    min-height: 50px;
+    outline: solid 1px #1992d4;
+    border: none;
+    transition: all .1s ease-in-out;
+}
+
+#OneNameInput:hover,
+#TwoNameInput:hover,
+select:hover,
+#StartButton:hover  {
+    outline-color: var(--counter-colour);
+}
+
+#StartButton {
+    color: black;
+    width: 10vw;
+    height: 50px; 
+    outline: solid 1px #1992d4;
+    border: none;
+    transition: all .1s ease-in-out;
+}
+
+/* Classes for hide and show*/
+.ClassNotVisible{
+    visibility: hidden;
+}
+
+.ClassHidden{
+    display: none;
+}
+
+
+/* #endregion */
+
+
+/* #region Markers */
+
+.Omarker0{background-image: url(./markers/Checked/check-svgrepo-com\(8\).svg);background-size: 50%;background-repeat: no-repeat;background-position: center;}
+.Omarker1{background-image: url(./markers/Checked/check-svgrepo-com\ \(7\).svg);background-size: 50%;background-repeat: no-repeat;background-position: center;}
+.Omarker2{background-image: url(./markers/Checked/check-svgrepo-com\ \(1\).svg);background-size: 50%;background-repeat: no-repeat;background-position: center;}
+.Omarker3{background-image: url(./markers/Checked/check-tick-svgrepo-com\ \(1\).svg);background-size: 50%;background-repeat: no-repeat;background-position: center;}
+.Xmarker0{background-image: url(./markers/X_es/x-svgrepo-com.svg);background-size: 70%;background-repeat: no-repeat;background-position: center;}
+.Xmarker1{background-image: url(./markers/X_es/x-circle-svgrepo-com\ \(1\).svg);background-size: 70%;background-repeat: no-repeat;background-position: center;}
+.Xmarker2{background-image: url(./markers/X_es/x-men-svgrepo-com.svg);background-size: 70%;background-repeat: no-repeat;background-position: center;}
+.Xmarker3{background-image: url(./markers/X_es/handle-x-svgrepo-com.svg);background-size: 70%;background-repeat: no-repeat;background-position: center;}        
+
+/* #endregion */
+
+
+/* #region Animations */
+
+.ClassWon{
+    animation: 5s alternate infinite winAni;
+}
+
+@keyframes winAni{
+from {
+    background-color: chocolate;
+    color: white;
+}
+50% {
+    background-color: yellowgreen;
+    color: black;
+}
+to {
+    background-color:darkred;
+    color: whitesmoke;
+}
+}
+
+
+#selectGameModeText {
+    animation: 5s infinite gameModeTextAni;
+}
+
+@keyframes gameModeTextAni
+{
+25% {
+    color: var(--counter-colour);
+    transform: scale(1.15) rotate(10deg);
+}
+50% {
+    color: white;
+    transform: scale(1) rotate(0deg);
+}
+75% {
+    color: var(--counter-colour);
+    transform: scale(1.15) rotate(-10deg);
+}
+}
+
+/* #endregion */

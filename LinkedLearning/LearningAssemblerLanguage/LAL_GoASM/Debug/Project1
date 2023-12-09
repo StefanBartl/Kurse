@@ -1,0 +1,28 @@
+.586
+.mmx
+.xmm
+.model flat,stdcall
+option casemap:none
+_EC_2_ Equ 1
+DEBUG Equ 1
+__NO_NOISE__ Equ 1
+CHARSIZE Equ 1
+MASM_COMPILER Equ 1
+APP_WIN32 Equ 1
+include ECExterns.inc
+IFNDEF NTDDI_VERSION
+	NTDDI_VERSION equ 003000000H
+ENDIF
+include ECResFile.inc
+include ECMasm32.asm
+
+
+.data
+align 4
+
+.code
+align 4
+
+include Project1.asm
+
+end

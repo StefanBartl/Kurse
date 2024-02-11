@@ -1,0 +1,108 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Text files - Legt fest, dass diese Textdateien sind und die Zeilenenden auf LF (Unix) festgelegt sind
+*.txt       text eol=lf
+*.md        text eol=lf
+*.html      text eol=lf
+*.xml       text eol=lf
+*.json      text eol=lf
+*.yml       text eol=lf
+
+# Code files - Behandelt diese Code-Dateien als Text mit LF-Zeilenenden
+*.c         text eol=lf
+*.cpp       text eol=lf
+*.h         text eol=lf
+*.hpp       text eol=lf
+*.cs        text eol=lf
+*.java      text eol=lf
+*.py        text eol=lf
+*.sh        text eol=lf
+
+# Executable files - Behandelt diese ausführbaren Dateien als Binärdateien
+*.exe       binary
+*.dll       binary
+*.so        binary
+
+# Image files - Behandelt diese Bilddateien als Binärdateien
+*.jpg       binary
+*.jpeg      binary
+*.png       binary
+*.gif       binary
+
+# Archive files - Behandelt diese Archivdateien als Binärdateien
+*.zip       binary
+*.tar       binary
+*.gz        binary
+*.rar       binary
+
+# Office files - Behandelt diese Office-Dateien als Binärdateien
+*.doc       binary
+*.docx      binary
+*.xls       binary
+*.xlsx      binary
+*.ppt       binary
+*.pptx      binary
+
+# PDF files - Behandelt PDF-Dateien als Binärdateien
+*.pdf       binary
+
+# Binary files - Behandelt diese Binärdateien als Binärdateien
+*.bin       binary
+*.dat       binary
+*.bak       binary
+*.pdb       binary
+
+# Font files - Behandelt diese Schriftarten als Binärdateien
+*.ttf       binary
+*.otf       binary
+*.woff      binary
+
+# 3D model files - Behandelt diese 3D-Modelldateien als Binärdateien
+*.obj       binary
+*.fbx       binary
+*.blend     binary
+
+# Audio files - Behandelt diese Audiodateien als Binärdateien
+*.mp3       binary
+*.wav       binary
+*.flac      binary
+
+# Video files - Behandelt diese Videodateien als Binärdateien
+*.mp4       binary
+*.avi       binary
+*.mkv       binary
+
+# Ignore line endings in images and binaries - Ignoriert Zeilenenden in Binärdateien
+*.png       -text
+*.jpg       -text
+*.jpeg      -text
+*.gif       -text
+*.exe       -text
+*.dll       -text
+*.so        -text
+*.zip       -text
+*.tar       -text
+*.gz        -text
+*.rar       -text
+*.pdf       -text
+*.bin       -text
+*.dat       -text
+*.bak       -text
+*.pdb       -text
+*.mp3       -text
+*.wav       -text
+*.flac      -text
+*.mp4       -text
+*.avi       -text
+*.mkv       -text
+
+# Ignore line endings in font files - Ignoriert Zeilenenden in Schriftarten
+*.ttf       -text
+*.otf       -text
+*.woff      -text
+
+# Ignore line endings in 3D model files - Ignoriert Zeilenenden in 3D-Modelldateien
+*.obj       -text
+*.fbx       -text
+*.blend     -text

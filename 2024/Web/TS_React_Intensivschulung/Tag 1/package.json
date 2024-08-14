@@ -1,0 +1,17 @@
+{
+    "name": "js",
+    "version": "1.0.0",
+    "description": "1.  Install dependencies and create required files",
+    "main": "01-shopping.js",
+    "type": "module",
+    "scripts": {
+      "start": "serve"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "serve": "^14.2.3"
+    }
+  }
+  

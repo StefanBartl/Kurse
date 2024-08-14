@@ -1,0 +1,17 @@
+{
+    "name": "Tag 2",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "type": "module",
+    "scripts": {
+      "start": "serve"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "serve": "^14.2.3"
+    }
+  }
+  

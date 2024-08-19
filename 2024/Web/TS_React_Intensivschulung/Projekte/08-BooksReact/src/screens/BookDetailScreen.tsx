@@ -1,13 +1,12 @@
 // src/screens/BookDetailScreen.tsx
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, redirect } from 'react-router-dom';  //navigate??
+import { useParams, redirect } from 'react-router-dom';  //navigate??
 import { Book } from '../domain/book/Book';
 import { fetchBook } from '../domain/book/api';
 
 const BookDetailScreen: React.FC = () => {
   const { isbn } = useParams<{ isbn: string }>();
   const [book, setBook] = useState<Book | null>(null);
-  //const navigate = useNavigate();
 
   useEffect(() => {
     if (isbn) {

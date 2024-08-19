@@ -5,6 +5,15 @@ Trainer: Alexander Zeiss
 [Classroom; Access-Token: bIGeyh8](https://workshops.de/classroom/4310852928/dashboard)
 [Workshop Github](https://github.com/derzeiss/workshopsde-2408)
 
+
+## Use
+
+ - Reference Types: `string[]`, `Array<string>`, `ReadonlyArray<string>`
+ - `unknown` erfordert entweder Type assertion `zb.: as  ` oder Laufzeitprüfung:
+   `if (typeof SomeObj === 'string') { /* Hier hat SomeObj den Typ String anstatt unknown */ }` 
+
+
+
 - gerendert, Dependency tree
 
 ## Feedback
@@ -188,7 +197,71 @@ const person = () => ({
 ```
 
 
-##
+## Compiler flag: strict
+
+![strict rules](Quellen/strict.png)
+
+### 1. `strictNullChecks`
+
+- **Bedeutung:** Diese Regel bewirkt, dass `null` und `undefined` **nicht** automatisch als gültige Werte für alle Typen akzeptiert werden. In anderen Worten, `null` und `undefined` sind nur gültig, wenn sie explizit im Typ enthalten sind.
+- **Beispiel:**
+  ```typescript
+  let str: string = "hello";
+  str = null; // Fehler, wenn `strictNullChecks` aktiviert ist.
+  
+  let strOrNull: string | null = "hello";
+  strOrNull = null; // Korrekt, da der Typ `string | null` zulässt.
+  ```
+
+### 2. `strictPropertyInitialization`
+
+- **Bedeutung:** Diese Regel stellt sicher, dass alle Eigenschaften einer Klasse ordnungsgemäß initialisiert werden, bevor sie verwendet werden. Das bedeutet, dass jede nicht-`undefined`-Eigenschaft im Konstruktor initialisiert oder mit einem Standardwert versehen werden muss, es sei denn, die Eigenschaft wird als optional (`?`) markiert.
+- **Beispiel:**
+  ```typescript
+  class Person {
+      name: string;
+      age: number; // Fehler: `age` wird nicht im Konstruktor initialisiert.
+
+      constructor(name: string) {
+          this.name = name;
+      }
+  }
+  
+  class PersonCorrect {
+      name: string;
+      age: number;
+
+      constructor(name: string, age: number) {
+          this.name = name;
+          this.age = age; // Korrekt, `age` wird initialisiert.
+      }
+  }
+  ```
+
+### 3. `strictFunctionTypes`
+
+- **Bedeutung:** Diese Regel verschärft die Überprüfung der Kompatibilität von Funktionssignaturen. Konkret bedeutet dies, dass TypeScript sicherstellt, dass Funktionen, die als Typen verwendet werden, kompatibel sind, indem es die Parameter- und Rückgabewerte strikter überprüft.
+- **Beispiel:**
+  ```typescript
+  type Func = (a: number) => void;
+  let func1: Func = (a: number) => {}; // Korrekt.
+  let func2: Func = (a: string) => {}; // Fehler, da `a` ein `number` sein sollte.
+  ```
+
+### 4. `strictBindCallApply`
+
+- **Bedeutung:** Diese Regel stellt sicher, dass die Methoden `bind`, `call` und `apply` korrekt verwendet werden. Wenn man `bind`, `call` oder `apply` auf eine Funktion anwendet, stellt TypeScript sicher, dass die übergebenen Argumente den Typen der ursprünglichen Funktionssignatur entsprechen.
+- **Beispiel:**
+  ```typescript
+  function add(a: number, b: number): number {
+      return a + b;
+  }
+
+  let addBound = add.bind(null, 10);
+  addBound("20"); // Fehler: `20` ist kein `number`.
+  
+  addBound(20); // Korrekt.
+  ```
 
 ## Nullish Coalescing Operator (`??`)
 
@@ -279,8 +352,77 @@ In diesem Beispiel wird `user.name` verwendet, wenn es nicht `null` oder `undefi
 
 Der Nullish Coalescing Operator `??` ist ein nützliches Werkzeug, um auf `null` und `undefined` zu prüfen und standardmäßige Fallback-Werte anzugeben, ohne andere "falsy" Werte wie `0` oder `false` zu beeinflussen. Dies macht ihn zu einem wertvollen Operator in Situationen, in denen solche Unterscheidungen wichtig sind.
 
-##
+## `.bind`
 
-##
+In TypeScript (und JavaScript) ist die Methode `bind` dazu da, eine Funktion an einen bestimmten Kontext (`this`) zu binden und eventuell auch einige der Parameter vorab festzulegen. Hier ist eine Erklärung, wie das mit `null` funktioniert:
+
+### Erklärung des Codes
+
+```typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+let addBound = add.bind(null, 10);
+addBound(20); // Funktioniert korrekt
+```
+
+#### Was passiert hier?
+
+1. **`bind` und `this`-Kontext**: 
+   - Die erste Argumente von `bind` legt den Wert von `this` für die gebundene Funktion fest. Wenn `null` als erster Parameter übergeben wird, bedeutet das, dass kein spezieller `this`-Kontext festgelegt wird. Der `this`-Kontext wird in diesem Fall als `null` behandelt, was in den meisten Fällen bedeutet, dass `this` entweder auf den globalen Kontext (z.B. `window` in einem Browser) oder `undefined` gesetzt wird, wenn `strict mode` aktiv ist.
+
+2. **`bind` und feste Parameter**: 
+   - Die nachfolgenden Argumente (`10` in diesem Fall) werden als feste Argumente für die gebundene Funktion festgelegt. In diesem Beispiel wird `a` auf `10` gesetzt.
+   - Die gebundene Funktion (`addBound`) erwartet daher nur noch den zweiten Parameter (`b`), da `a` bereits auf `10` festgelegt wurde.
+
+### Wird `null` ersetzt?
+
+- **`this`-Kontext:** In diesem Beispiel spielt der `this`-Kontext keine Rolle, weil die `add`-Funktion den `this`-Kontext nicht verwendet. Daher wird das `null`, das an `bind` übergeben wird, nicht in der Funktion selbst verwendet oder ersetzt.
+  
+- **Gebundene Parameter:** Wenn man die gebundene Funktion `addBound` aufruft, gibt man nur die verbleibenden Argumente an. Im Beispiel `addBound(20);` wird `20` als das zweite Argument (`b`) verwendet, da das erste Argument (`a`) bereits auf `10` festgelegt ist.
+
+```typescript
+// Der ursprüngliche Aufruf von `add`
+add(10, 20); // ergibt 30
+
+// Der Aufruf von `addBound` nach dem Binden
+addBound(20); // ergibt ebenfalls 30
+```
+
+### Was passiert bei `addBound("20")`?
+
+In Ihrem Beispiel:
+
+```typescript
+addBound("20"); // Fehler in TypeScript
+```
+
+- **TypeScript**: Da `addBound` erwartet, dass der Parameter `b` eine Zahl (`number`) ist, führt die Übergabe einer Zeichenkette (`"20"`) zu einem Typfehler in TypeScript. Dies ist ein Feature von TypeScript, das Typensicherheit bietet.
+  
+- **JavaScript**: In reinem JavaScript würde `"20"` in eine Zahl konvertiert, und die Funktion würde trotzdem funktionieren und `30` zurückgeben, weil JavaScript die Typen automatisch konvertiert.
+
+### Zusammenfassung
+
+Das `null`, das bei `bind` übergeben wird, bezieht sich auf den `this`-Kontext und wird nicht durch einen Wert ersetzt. Die gebundenen Parameter (z.B. `10`) bleiben fest, und alle weiteren Argumente, die beim Aufruf der gebundenen Funktion übergeben werden, vervollständigen die Argumentliste. In TypeScript muss man darauf achten, dass die Typen der übergebenen Argumente den erwarteten Typen entsprechen, sonst gibt es einen Fehler.
+
+## Non-Null Assertion Operator
+
+A new ! post-fix expression operator may be used to assert that its operand is non-null and non-undefined in contexts where the type checker is unable to conclude that fact. For example:
+
+```typescript
+// Compiled with --strictNullChecks
+function validateEntity(e?: Entity) {
+    // Throw exception if e is null or invalid entity
+}
+
+function processEntity(e?: Entity) {
+    validateEntity(e);
+    let a = e.name;  // TS ERROR: e may be null.
+    let b = e!.name;  // OKAY. We are asserting that e is non-null.
+}
+```
+
+Note that it is just an assertion, and just like type assertions you are responsible for making sure the value is not null. A non-null assertion is essentially you telling the compiler "I know it's not null so let me use it as though it's not null".
 
 ##

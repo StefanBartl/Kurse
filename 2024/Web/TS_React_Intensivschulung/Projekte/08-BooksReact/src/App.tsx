@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { AppHeader } from "./components/AppHeader";
-import { BookList } from "./components/BookList";
 import { useBooks } from "./domain/book/hooks";
 import { Outlet } from "react-router-dom";
 
 function App() {
-  const { books, state, error, refresh } = useBooks();
+  const { refresh } = useBooks();
+  //const { books, state, error, refresh } = useBooks();
 
   useEffect(() => {
     const intervalId = setInterval(refresh, 30000);

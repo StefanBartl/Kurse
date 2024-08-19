@@ -5,10 +5,35 @@ Trainer: Alexander Zeiss
 [Classroom; Access-Token: bIGeyh8](https://workshops.de/classroom/4310852928/dashboard)
 [Workshop Github](https://github.com/derzeiss/workshopsde-2408)
 
+- gerendert, Dependency tree
+
+## Feedback
+
+1. Bei Fragen dlänger zum antworten zeit lassen
+2. Classroom usw erklären
+3. Aufgabenbeschreibung zu schnell, auch wenn sich keiner meldet soll man warten und doppelt angeben (zb.: erste React app)
+   1. Die Beispiele langsamer erklären & durchgehen
+   2. Zeit für Beispiele
+4. Gruppenaustausch?
+5. Nachschlagwerke, Docs, Infomaterial anbieten mit dem auch noch nach der Schulung gearbeitet werden kann
+6. Deutsche Materialien
+7. Wenn du verweist auf die folien "da stand das drinnen" - ch kann als tn nicht dir folgen, die sdlides offen habenm, notizen machen, usw...
+8. keine Zeit für notizen
+9. Folien mit Grafiken teilweise nur 3 sekunden dann weiter
+10. In den Folien hin und her springen ist schwierig
+
 ## Offene Fragen
 
 1. **Was passiert, wenn man einen Error wirft, aber kein `catch()` implementiert?**
    Der Error wird dazu führen, dass das Programm abgebrochen wird.
+2. Extends & Intersection Type: `type Magazine = Book & {  coverUrl: string; }`
+3. 
+
+## Schnell-Tipps
+
+1. Interfaces dürfen nur einmal im Projekt vorkommen, ansonsten werden sie gemerged. Daher vl Interfaces eine eigene datei
+2. Funktionstypen for unions of type literals und primitive typen usw.. mit Type Aliases annstatt mit Interfaces
+3. 
 
 ## Objects: Computed Property Names - Namen von Objekteigenschaften dynamisch zur Laufzeit zu bestimmen
 

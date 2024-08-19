@@ -9,6 +9,8 @@ Trainer: Alexander Zeiss
 
 ## Feedback
 
+wäte gu checkpoints fü den code z uaben, bei dne man sich reseten kann
+
 1. Bei Fragen dlänger zum antworten zeit lassen
 2. Classroom usw erklären
 3. Aufgabenbeschreibung zu schnell, auch wenn sich keiner meldet soll man warten und doppelt angeben (zb.: erste React app)

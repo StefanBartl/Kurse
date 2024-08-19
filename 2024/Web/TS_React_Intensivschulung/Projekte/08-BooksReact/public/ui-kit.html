@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../src/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ui-kit</title>
+
+    <style>
+      #root {
+        scroll-behavior: smooth;
+      }
+
+      section {
+        margin: 5rem 0;
+      }
+
+      section.first {
+        margin-top: 3rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p:not(.default) {
+        color: var(--c-text-tertiary);
+      }
+
+      p:not(.default):first-letter {
+        font-size: inherit;
+        float: none;
+        margin: 0;
+        font-weight: 400;
+      }
+
+      ul {
+        margin-left: 1rem;
+      }
+
+      code {
+        display: inline-block;
+        padding: 0rem 0.2rem;
+        font-size: 0.95em;
+        line-height: 130%;
+        border: 1px solid #cbd3da;
+        border-radius: 4px;
+        color: #666;
+        background: #f8f8f8;
+      }
+
+      code.preview {
+        margin-top: 0.75rem;
+      }
+
+      code pre {
+        padding: 0.25rem;
+      }
+
+      .icon-container {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      .m-top_sm {
+        margin-top: 0.5rem;
+      }
+
+      h3:not(.default) {
+        font-weight: 600;
+        margin: 2rem 0 0.5rem;
+      }
+
+      h2:not(.default) + h3:not(.default) {
+        margin-top: 1rem;
+      }
+
+      .highlight {
+        background: yellow;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .section__anchor {
+        position: absolute;
+        top: -200px;
+        left: 0;
+      }
+
+      .app-header a {
+        margin-top: 1rem;
+      }
+
+      .app-header a.active:after {
+        bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <header class="app-header">
+        <h1>Bookmonkey UI-Kit</h1>
+        <nav>
+          <a href="#general">General</a>
+          <a href="#icons">Icons</a>
+          <a href="#buttons">Buttons</a>
+          <a href="#text-formatting">Text-Formatting</a>
+          <a href="#custom-spacing">Custom-Spacing</a>
+        </nav>
+      </header>
+
+      <!-- GENERAL -->
+      <section class="first">
+        <div id="general" class="section__anchor"></div>
+        <h2>General</h2>
+        <p>
+          Always apply the component name in <code>kebab-case</code> as
+          <code>className</code>. Most styles are applied via these
+          component-specific classes.
+        </p>
+        <code class="preview">
+          <pre>
+export const <span class="highlight">ExampleBook</span> = () => {
+  &lt;div className="<span class="highlight">example-book</span>"&gt;
+  ...
+  &lt;/div&gt;
+}</pre>
+        </code>
+      </section>
+
+      <!-- ICONS -->
+      <section>
+        <div id="icons" class="section__anchor"></div>
+        <h2>Icons</h2>
+        <ul class="text-meta">
+          <li>We use unicode Emojis.</li>
+          <li>
+            Make sure you wrap every icon in a
+            <code>&lt;span&gt;</code> element, so styles are applied correctly.
+          </li>
+          <li>
+            Icons you'll need:
+
+            <div class="icon-container">
+              <span>👏</span>
+              <span>💰</span>
+              <span>⭐️</span>
+              <span>✏️</span>
+              <span>💾</span>
+              <span>🧡</span>
+            </div>
+          </li>
+        </ul>
+
+        <h3>Icon animation</h3>
+        <p>
+          You can also animate an icons appearance by adding
+          <code>className="icon_entry"</code>.
+        </p>
+
+        <div class="row m-top_sm">
+          <button
+            class="secondary"
+            onclick="document.getElementById('icon-animated').classList.toggle('icon_entry')"
+          >
+            <span>🪄</span> toggle icon_entry class.
+          </button>
+          <span id="icon-animated" style="font-size: 1.25rem">⭐️</span>
+        </div>
+      </section>
+
+      <!-- BUTTONS -->
+      <section>
+        <div id="buttons" class="section__anchor"></div>
+        <h2>Buttons</h2>
+        <h3>Primary</h3>
+        <button><span>✌🏼</span> primary</button>
+        <code class="preview">
+          <pre>
+&lt;button&gt;
+  &lt;span&gt;✌🏼&lt;/span&gt;
+  primary
+&lt;/button&gt;</pre
+          >
+        </code>
+
+        <h3>Secondary</h3>
+        <button class="secondary"><span>✌🏼</span> secondary</button>
+        <code class="preview">
+          <pre>
+&lt;button className="<span class="highlight">secondary</span>"&gt;
+  &lt;span&gt;✌🏼&lt;/span&gt;
+  secondary
+&lt;/button&gt;</pre>
+        </code>
+
+        <h3>Tertiary</h3>
+        <button class="tertiary"><span>✌🏼</span> tertiary</button>
+        <code class="preview">
+          <pre>
+&lt;button className="<span class="highlight">tertiary</span>"&gt;
+  &lt;span&gt;✌🏼&lt;/span&gt;
+  tertiary
+&lt;/button&gt;</pre>
+        </code>
+      </section>
+
+      <!-- TEXT-FORMATTING -->
+      <section>
+        <div id="text-formatting" class="section__anchor"></div>
+        <h2>Text formatting</h2>
+        <h3>Paragraphs</h3>
+        <p class="default">
+          If you use <code>&lt;p&gt;</code> Tags they will have a big drop-cap
+          letter.
+        </p>
+
+        <h3>Meta-text</h3>
+        <div class="text-meta">
+          If you add <code>className="text-meta"</code> to an element, its text
+          will appear greyish.
+        </div>
+
+        <h3>label</h3>
+        <label class="default">A label</label>
+        <div>
+          will be smaller and spaced so it's aligned with a possible
+          <code>&lt;input /&gt;</code> field.
+        </div>
+
+        <h3>small</h3>
+        <small
+          >Text wrapped inside a <code>&lt;small&gt;</code> element will be ...
+          well ... smaller.</small
+        >
+
+        <h3>error</h3>
+        <div class="error">
+          Use <code>className="error"</code> to display error-messages.
+        </div>
+      </section>
+
+      <!-- CUSTOM-SPACING -->
+      <section>
+        <div id="custom-spacing" class="section__anchor"></div>
+        <h2>Custom spacing</h2>
+        <p>
+          Most of the time spacing will be handled for you by component-specific
+          styles. If these aren't enough, you can add <code>m-top</code> or
+          <code>m-bottom</code> to add additional margin to an element.
+        </p>
+      </section>
+
+      <section>
+        <h2>And that's it...</h2>
+        <p>You're ready to go, let's build a React app!</p>
+      </section>
+    </div>
+  </body>
+
+  <script>
+    const ids = [
+      "general",
+      "icons",
+      "buttons",
+      "text-formatting",
+      "custom-spacing",
+    ];
+
+    // map id to intersecting state
+    let intersections = ids.reduce((obj, id) => {
+      obj[id] = false;
+      return obj;
+    }, {});
+
+    let currentlyHighlighted = "";
+
+    const onIntersection = (entries, observer) => {
+      // update state
+      entries.forEach(
+        (e) => (intersections[e.target.children[0].id] = e.isIntersecting)
+      );
+
+      // get first intersection
+      const firstIntersectingId = ids.find((id) => intersections[id]);
+
+      // set classNames
+      if (currentlyHighlighted)
+        document
+          .querySelector(`[href="#${currentlyHighlighted}"]`)
+          .classList.remove("active");
+      document
+        .querySelector(`[href="#${firstIntersectingId}"]`)
+        .classList.add("active");
+
+      currentlyHighlighted = firstIntersectingId;
+    };
+
+    const observer = new IntersectionObserver(onIntersection, {
+      threshold: 0.001,
+      root: document.getElementById("root"),
+      rootMargin: "-150px 0px 0px 0px",
+    });
+    ids.forEach((id) =>
+      observer.observe(document.getElementById(id).parentElement)
+    );
+  </script>
+</html>

@@ -12,3 +12,22 @@ export const fetchBook = (isbn: string) => {
   );
   return result as Promise<Book>;
 };
+
+// Wartum partial?
+export const updateBook = async (book: Partial<Book>): Promise<void> => {
+ 
+  const response = await fetch(`http://localhost:4730/books/${book.isbn}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(book),
+  });
+
+  if (!response.ok) {
+    throw new Error("Update book fehlerhaft....");
+  }
+
+
+
+};

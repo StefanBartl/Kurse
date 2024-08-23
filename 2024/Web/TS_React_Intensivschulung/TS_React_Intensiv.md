@@ -28,8 +28,6 @@ Trainer: Alexander Zeiss
 
 ## Feedback
 
-wäte gu checkpoints fü den code z uaben, bei dne man sich reseten kann
-
 1. Bei Fragen dlänger zum antworten zeit lassen
 2. Classroom usw erklären
 3. Aufgabenbeschreibung zu schnell, auch wenn sich keiner meldet soll man warten und doppelt angeben (zb.: erste React app)
@@ -617,6 +615,8 @@ const config: { [key: string]: unknown } = {
 ```
 
 Hier kann `config` beliebige Schlüssel vom Typ `string` haben, und die Werte dieser Schlüssel können jeden Typ annehmen, aber sie sind zunächst als `unknown` getypt, was bedeutet, dass du sie explizit in den erwarteten Typ umwandeln musst, bevor du sie verwenden kannst.
+
+`{ [key: string]: unknown }` bedeutet also, Wie auch immer `key` tatsächlich im Objekt genannt wird, es ist ein `string` mit einem Wert vom Typ `unkown`
 
 ### Gültige Schlüsseltypen für `Objects`
 

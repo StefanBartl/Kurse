@@ -1,11 +1,10 @@
 ## JS Hard Parts v2 / Will Sentance ( Codesmith CEO ) / Mitte August, 23
 
-
-## Content
+## Content ✓
 
 - [JS Hard Parts v2 / Will Sentance ( Codesmith CEO ) / Mitte August, 23](#js-hard-parts-v2--will-sentance--codesmith-ceo---mitte-august-23)
-- [Content](#content)
-- [Funktionen](#funktionen)
+- [Content ✓](#content-)
+- [Funktionen ✓](#funktionen-)
 - [Callback-Queue vs, Microtask-Queue](#callback-queue-vs-microtask-queue)
   - [Promise Microtask Queue (auch bekannt als Microtask Queue)](#promise-microtask-queue-auch-bekannt-als-microtask-queue)
   - [Callback Queue](#callback-queue)
@@ -16,9 +15,9 @@
   - [`this` als implizieter Parameter](#this-als-implizieter-parameter)
     - [that = this (deprecated)](#that--this-deprecated)
 - [Protoype vs Class](#protoype-vs-class)
-- [Wichtiges](#wichtiges)
+- [Wichtiges ✓](#wichtiges-)
 
-## Funktionen
+## Funktionen ✓
 
 + ***Execution context***: Eine Funktion stellt in Javascript einen neuen Ausführungskontext (en.: execution context) dar, da ein neuer "Thread of Execution" und ein neuer lokaler Speicher zur Verfügung gestellt wird. Dies wird über ***scope*** und ***cllosure*** realisiert.
     + Die Funktionsdefinition und der Name wird im ***global()*** Ausführungkontext gespeichert: Label -> Funktionsname & value _> Funktionsdefinition.
@@ -28,7 +27,8 @@
 + Im ***call stack*** representiert die Funktion ***global()*** den Ausführungskontext des JS Programms dar und ist immer 'ganz unten'.
 + ***Wichtige Ausführungselemente***: Um den Vorgang bei einem Funktionsaufruf abzubielden benötigt man 3 Elemente: Global Memory, Local Memory, Call Stack
 + ***Function Memory:*** Gibt man eine Funktion aus einer Funktion zurück, nimmt diese Referenzen auf die Daten des lokalen Speichers mit:
-```
+  
+```js
 function outer(){
     let counter = 0;
     function incrementCounter(){ counter++; }
@@ -37,6 +37,7 @@ function outer(){
 const myNewFunction = outer();
 myNewFunction()
 ```
+
 Da ***myNewFunction()*** aus der Funktion ***outer()*** zurückgegeben wurde hat sie Zugriff auf die Variable ***counter***, auch dann wenn der Ausführungskontext von ***outer()*** nach der Zuweisung zu ***myNewFunction*** schon geschlossen ist. Dieses Verhalten wird auch ***Funktionsgedächtnis*** (en.: Function Memory) bzw. Zugriff auf "Live Data" genannt.
 ***myNewFunction()*** bekommt effektiv im globalen Ausführungskontext die Funktionsdefinition von ***incrementCounter()*** zugewiesen und an diese ist die Variable counter (data) angehängt.
 
@@ -69,7 +70,6 @@ const closuresBeispiel = aeussereFunktion(); // innereFunktion wird zurückgegeb
 closuresBeispiel(); // D
 ```
 In diesem Beispiel bildet die innereFunktion eine Closure über die aeussereVariable, wodurch sie Zugriff auf aeussereVariable hat, obwohl aeussereFunktion bereits beendet ist.
-
 
 ## Callback-Queue vs, Microtask-Queue
 
@@ -284,7 +284,7 @@ Folgende Codes führen zum gleichen Ergebnis:
 
 Prototypenkette:
 
-```
+```js
 function userCreator(name, score){
     this.name = name;
     this.score = score;
@@ -298,9 +298,9 @@ const user1 = new userCreator(“Eva”, 9)
 user1.increment()
 ```
 
-Klassensytax:
+Klassensyntax:
 
-```
+```js
 class UserCreator {
   constructor(name, score) {
     this.name = name;
@@ -323,7 +323,7 @@ user1.increment();
 Beide Codes sind identisch, tatsächlich wird die Klassensyntax von JS exakt gleich behandelt und intern so abgespeichert, als hätte man die Prototype-Variante geschrieben. `class` ist in JS "syntactic sugar". Sie existiert nur für die Programmierer, nicht für den Browser.
 
 
-## Wichtiges
+## Wichtiges ✓
 
 + Ausführungskontext (en.: execution context) 
     + Globaler Speicher (en.: global memory) und Lokaler Speicher (en.: local memory)

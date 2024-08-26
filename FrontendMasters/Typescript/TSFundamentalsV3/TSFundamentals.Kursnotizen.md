@@ -4,12 +4,10 @@
 [Kurs Repo](https://github.com/mike-north/ts-fundamentals-v3)
 
 - [TypeScript Fundamentals, v3 / Mike North, Stripe / Ende August 23'](#typescript-fundamentals-v3--mike-north-stripe--ende-august-23)
-  - [Takeaways](#takeaways)
-  - [Index Signaturen](#index-signaturen)
+  - [Index Signaturen ✓](#index-signaturen-)
+  - [exit](#exit)
 
-## Takeaways
-
-## Index Signaturen
+## Index Signaturen ✓
 
 In TypeScript ermöglichen Index-Signaturen die Definition von Objektstrukturen, bei denen die Eigenschaftsnamen nicht im Voraus bekannt sind. Mit Index-Signaturen können Sie angeben, welche Arten von Schlüsseln (Eigenschaftsnamen) und welche Datentypen für die dazugehörigen Werte erlaubt sind.
 
@@ -61,3 +59,4 @@ interface InvalidExample {
 }
 ```
 
+## exit

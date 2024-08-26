@@ -1,12 +1,13 @@
 # Deep Javascript Foundations v3 / Kyle Simpson, Teacher &  Autor "You dont know JS", getify / Mitte August, 23'
+✓
 
 - [Deep Javascript Foundations v3 / Kyle Simpson, Teacher \&  Autor "You dont know JS", getify / Mitte August, 23'](#deep-javascript-foundations-v3--kyle-simpson-teacher---autor-you-dont-know-js-getify--mitte-august-23)
-  - [Takeaways](#takeaways)
-  - [ToPrimitive](#toprimitive)
+  - [Takeaways ✓](#takeaways-)
+  - [ToPrimitive ✓](#toprimitive-)
     - [Symbol](#symbol)
-  - [Interpreted vs Compiled](#interpreted-vs-compiled)
+  - [Interpreted vs Compiled ✓](#interpreted-vs-compiled-)
 
-## Takeaways
+## Takeaways ✓
 
 + Object.is(item1, item2); // Gibt == zurück: Unterschied zu === ist, dass es -0 und +0 als gleich und NaN zu NaN als ungleich zurück gibt.
 + Bei Verwendung von `new` vor String(), Number() oder Boolean() wandelt man einen primitiven Datentyp in ein Objekt um, was zu unnötigen Overhead führt.
@@ -18,7 +19,8 @@
 + In einer 'true interpreted language' wie zb.: Bash würde ein Fehler in Zeile 9 erst auffalen, wenn das Programm  dort angekommen ist. Der Fakt, das Javascript die Programmdatei prüft, bevor sie ausgeführt wird, bedeutet für sich, dass Javascript 'kompiliert' wird bzw. zumindest nicht 'nur' interpretiert, Stichwort JIT - Just in Time Compiler- JS-Code wird zur Laufzeit in optimierten Machinencode übersetzt.
 
 
-## ToPrimitive
+## ToPrimitive ✓
+
 
 ToPrimitive() ist eine Methode in JavaScript, die aufgerufen wird, wenn ein Objekt in einen primitiven Wert (z. B. eine Zahl, eine Zeichenkette oder einen booleschen Wert) umgewandelt werden muss. Dieser Vorgang wird auch als "Typumwandlung" oder "Type Coercion" bezeichnet. Die ToPrimitive()-Methode wird verwendet, wenn ein Operator oder eine Funktion erwartet, dass ein Objekt als primitiver Wert verwendet wird.
 
@@ -100,7 +102,7 @@ console.log(myObject[symbol1]); // Zugriff auf die Symbol-Eigenschaft
 
 In diesem Beispiel werden zwei eindeutige Symbole symbol1 und symbol2 erstellt. Obwohl beide Symbole denselben Beschreibungstext haben, sind sie nicht gleich. Dann wird ein Objekt myObject erstellt, das eine Eigenschaft mit dem Symbol symbol1 verwendet. Der Zugriff auf diese Eigenschaft erfolgt durch Verwendung des Symbols als Schlüssel. Da Symbol-Eigenschaften standardmäßig nicht aufzählbar sind, werden sie nicht in for...in-Schleifen angezeigt.
 
-## Interpreted vs Compiled
+## Interpreted vs Compiled ✓
 
 + Just-In-Time-Kompilierung (JIT-Kompilierung): Moderne JavaScript-Engines, die in Webbrowsern und JavaScript-Runtime-Umgebungen wie Node.js verwendet werden, verwenden Techniken wie JIT-Kompilierung. Hierbei wird der JavaScript-Code nicht im herkömmlichen Sinne vorab in Maschinencode übersetzt, sondern der JavaScript-Code wird zur Laufzeit in optimierten Maschinencode kompiliert, um die Ausführung zu beschleunigen.
 
@@ -109,7 +111,3 @@ In diesem Beispiel werden zwei eindeutige Symbole symbol1 und symbol2 erstellt. 
 + Build-Prozesse: In modernen Webentwicklungs-Workflows werden JavaScript-Dateien oft in Produktionsumgebungen optimiert, zusammengeführt und minifiziert. Dies geschieht während des Build-Prozesses, bei dem Tools wie Webpack, Rollup oder Parcel verwendet werden. Diese Tools können den JavaScript-Code so optimieren, dass er effizienter ausgeführt wird und die Dateigröße minimiert wird.
 
 Zusammengefasst wird JavaScript im Allgemeinen zur Laufzeit interpretiert oder zur Laufzeit in optimierten Maschinencode kompiliert. Dies ermöglicht es Entwicklern, flexiblen und plattformübergreifenden Code zu schreiben, der auf verschiedenen Umgebungen funktioniert, ohne dass eine spezifische Kompilierung erforderlich ist.
-
-
-
-

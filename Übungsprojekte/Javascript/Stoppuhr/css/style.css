@@ -1,0 +1,51 @@
+@media (min-width: 600px) { // Ab minimaler Breite von 600px
+	#main { width: 390px }
+	#sidebar { width: 190px }
+}
+body {
+    background-color: #D1B906;
+    transition:background 3s
+    
+}
+body:hover {
+    background-color: cornflowerblue
+}
+
+.container {
+    display: block;
+    text-align: center;
+    padding-top: 15em;
+    color: white;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 2.6em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+#seconds, #tens{
+    font-size:10em;
+    color: white;
+  }
+
+#start, #stop, #reset {
+    line-height: 60px;
+    width: 120px; 
+    background-color: #D1B906;
+    border-color: #999;
+    color: white;
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+}
+#start:hover, #stop:hover, #reset:hover {
+    background-color: #A99505;
+}
+#start:active, #stop:active, #reset:active {
+    background-color: #A99505;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

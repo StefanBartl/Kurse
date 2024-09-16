@@ -1,0 +1,192 @@
+/* === Colour-Palette === */
+/* filter: brightness(0) saturate(100%) invert(44%) sepia(24%) saturate(4068%) hue-rotate(1deg) brightness(98%) contrast(106%); */
+/* filter: brightness(0) saturate(100%) invert(19%) sepia(63%) saturate(4179%) hue-rotate(293deg) brightness(123%) contrast(136%); */
+/*? === design === */
+/*? === text === */
+/* futura: font-family: futura-pt,sans-serif; */
+@import url("https://use.typekit.net/izw3hmc.css");
+/* Mixins */
+/*#region page containers */
+.container {
+  display: grid;
+}
+
+.main {
+  display: grid;
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+/*#endregion */
+/*#region Introduction Section */
+.introduction_headline {
+  color: rgb(255, 102, 0);
+}
+
+.introduction_img_wrapper {
+  padding: 20% 20% 20% 20%;
+  aspect-ratio: 1/1;
+  -webkit-filter: drop-shadow(-1rem 1rem 2rem rgb(255, 255, 255));
+  filter: drop-shadow(-1rem 1rem 2rem rgb(255, 255, 255));
+}
+
+.introduction_img {
+  border-radius: 3rem;
+}
+
+.introduction_text_wrapper {
+  margin: 10% auto 20% 10%;
+}
+.introduction_text_wrapper > h3 {
+  font-weight: bold;
+}
+.introduction_text_wrapper > p {
+  max-width: clamp(45ch, 50%, 75ch);
+  padding-left: 3rem;
+}
+
+.introduction_text_statement {
+  text-align: center;
+}
+
+/*#endregion*/
+/*#region Transitions & Animations */
+.introduction_img_wrapper:hover {
+  animation: intro_img_animation infinite 10s;
+}
+
+@keyframes intro_img_animation {
+  0% {
+    -webkit-filter: drop-shadow(-1rem 1rem 2rem rgb(255, 255, 255));
+    filter: drop-shadow(-1rem 1rem 2rem rgb(255, 255, 255));
+  }
+  25% {
+    -webkit-filter: drop-shadow(-1rem -1rem 2rem rgb(255, 102, 0));
+    filter: drop-shadow(-1rem -1rem 2rem rgb(255, 102, 0));
+  }
+  50% {
+    -webkit-filter: drop-shadow(1rem -1rem 2rem rgb(255, 0, 255));
+    filter: drop-shadow(1rem -1rem 2rem rgb(255, 0, 255));
+  }
+  75% {
+    -webkit-filter: drop-shadow(1rem 1rem 2rem rgb(255, 102, 0));
+    filter: drop-shadow(1rem 1rem 2rem rgb(255, 102, 0));
+  }
+}
+.introduction_first_h3,
+.introduction_first_p,
+.introduction_second_h3,
+.introduction_second_p,
+.introduction_text_statement {
+  transition: color 0.5s;
+}
+
+.introduction_first_h3:hover,
+.introduction_first_p:hover,
+.introduction_second_h3:hover,
+.introduction_second_p:hover,
+.introduction_text_statement:hover {
+  color: rgb(255, 102, 0);
+}
+
+/*#endregion*/
+/*#region Styling-Pseudoelements */
+.introduction_section {
+  position: relative;
+}
+
+.introduction_section::before {
+  content: "";
+  border: solid 2px rgb(107, 106, 106);
+  position: absolute;
+  transition: all 2s ease;
+  right: 0;
+  top: -1rem;
+  height: 100%;
+}
+
+.introduction_section:hover::before {
+  border-color: rgb(255, 0, 255);
+  top: 0rem;
+  height: calc(100% - 2rem);
+}
+
+.introduction_text_wrapper {
+  position: relative;
+}
+
+.introduction_text_wrapper::before,
+.introduction_text_wrapper::after {
+  content: "";
+  border: solid 2px rgb(107, 106, 106);
+  position: absolute;
+  transition: all 1s ease;
+}
+
+.introduction_text_wrapper::before {
+  left: -1.5rem;
+  top: -0.5rem;
+  width: 2rem;
+}
+
+.introduction_text_wrapper::after {
+  left: -1rem;
+  top: -1rem;
+  height: 2rem;
+}
+
+.introduction_text_wrapper:hover::before {
+  width: 2.5rem;
+  border-color: rgb(255, 0, 255);
+}
+
+.introduction_text_wrapper:hover::after {
+  left: -1.5rem;
+  top: -0.5rem;
+  height: 2.5rem;
+  border-color: rgb(255, 0, 255);
+}
+
+/*#endregion*/
+/*#region media queries */
+@media (min-width: 700px) {
+  .introduction_section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: center;
+  }
+  .introduction_img_wrapper {
+    padding: 10% 20% 20% 20%;
+    aspect-ratio: 1/1;
+  }
+}
+@media (max-width: 500px) {
+  .main {
+    padding: 0rem;
+  }
+  .introduction_section {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  .introduction_img_wrapper {
+    padding: 10% 10% 10% 10%;
+    aspect-ratio: 1/1;
+  }
+  .introduction_text_wrapper {
+    margin: 5%;
+  }
+  .introduction_text_wrapper > h3 {
+    font-weight: bold;
+  }
+  .introduction_text_wrapper > p {
+    max-width: clamp(45ch, 50%, 75ch);
+    padding-left: 3rem;
+  }
+  .introduction_section::before {
+    display: none;
+  }
+}
+/* #endregion */
+
+/*# sourceMappingURL=Home.module.css.map */

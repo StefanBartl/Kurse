@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <title>Mein Taschenrechner</title>
+    <!-- Javascript und CSS Dateieinbindung -->
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Favicon & AppleTouch-->
+    <link rel="icon" sizes="16x16" href="pics/Logo/protesblog_favicon200x200.ico">
+    <link rel="apple-touch-icon" sizes="120x120" href="pics/Logo/protesblog_120x120.png" />
+    <!-- Metadaten  -->
+    <meta name="author" content="Stefan Bartl">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta charset="UTF-8">
+    <!-- Responsives Menü -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <script type='text/javascript'>
+   function Ergebnis()
+   {
+     var x = 0;
+     x = eval(window.document.Rechner.Display.value);
+     window.document.Rechner.Display.value = x;
+   }
+   function Hinzufuegen(Zeichen)
+   {
+    window.document.Rechner.Display.value =
+    window.document.Rechner.Display.value + Zeichen;
+   }
+   function Sonderfunktion(Funktion)
+   {
+    if(Funktion == "sqrt")
+     {
+       var x = 0;
+       x = eval(window.document.Rechner.Display.value);
+       window.document.Rechner.Display.value = Math.sqrt(x);
+     }
+     if(Funktion == "pow")
+     {
+       var x = 0;
+       x = eval(window.document.Rechner.Display.value);
+       window.document.Rechner.Display.value = x * x;
+     }
+     if(Funktion == "log")
+     {
+       var x = 0;
+       x = eval(window.document.Rechner.Display.value);
+       window.document.Rechner.Display.value = Math.log(x);
+     }
+  }
+  </script>
+  <form name="Rechner" id="rechner">
+    <table cellpadding="10" id="table">
+      <tr>
+        <td><input name="Display" id="display" size="40" maxlength="40"></td>
+      </tr>
+      <tr>
+        <td>
+  	  <table>
+          <tr>
+            <td><input type="button" id="bt" value="   7   " onclick="Hinzufuegen('7')"></td>
+            <td><input type="button" id="bt" value="   8   " onclick="Hinzufuegen('8')"></td>
+            <td><input type="button" id="bt" value="   9   " onclick="Hinzufuegen('9')"></td>
+            <td><input type="button" id="bt" value="   +    " onclick="Hinzufuegen('+')"></td>
+          </tr>
+          <tr>
+            <td><input type="button" id="bt" value="   4   " onclick="Hinzufuegen('4')"></td>
+            <td><input type="button" id="bt" value="   5   " onclick="Hinzufuegen('5')"></td>
+            <td><input type="button" id="bt" value="   6   " onclick="Hinzufuegen('6')"></td>
+            <td><input type="button" id="bt" value="    -    " onclick="Hinzufuegen('-')"></td>
+          </tr>
+          <tr>
+            <td><input type="button" id="bt" value="   1   " onclick="Hinzufuegen('1')"></td>
+            <td><input type="button" id="bt" value="   2   " onclick="Hinzufuegen('2')"></td>
+            <td><input type="button" id="bt" value="   3   " onclick="Hinzufuegen('3')"></td>
+            <td><input type="button" id="bt" value="    *    " onclick="Hinzufuegen('*')"></td>
+          </tr>
+          <tr>
+            <td><input type="button" id="bt" value="    =    " onclick="Ergebnis()"></td>
+            <td><input type="button" id="bt" value="   0   " onclick="Hinzufuegen('0')"></td>
+            <td><input type="button" id="bt" value="   .    " onclick="Hinzufuegen('.')"></td>
+            <td><input type="button" id="bt" value="    /    " onclick="Hinzufuegen('/')"></td>
+          </tr>
+          <tr>
+            <td><input type="button" id="bt" value="Wurzel " onclick="Sonderfunktion('sqrt')"></td>
+            <td><input type="button" id="bt" value=" pow " onclick="Sonderfunktion('pow')"></td>
+            <td><input type="button" id="bt" value=" log " onclick="Sonderfunktion('log')"></td>
+            <td><input type="reset" id="bt" value="   C   "></td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>

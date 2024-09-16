@@ -1,0 +1,204 @@
+@import './ColorsAndDesign.scss';
+
+
+
+/*#region page containers */
+
+.container {
+    display: grid;
+}
+
+.main {
+    display: grid;
+    padding: 0rem 1rem 0rem 1rem;
+}
+
+/*#endregion */
+
+
+
+/*#region Introduction Section */
+
+.introduction_headline {
+    color: $counter-colour;
+}
+
+.introduction_img_wrapper {
+    padding: 20% 20% 20% 20%;
+    aspect-ratio: 1/1;
+    @include drop-shadow(-1rem, 1rem, 2rem, $wkd-white) ;
+}
+
+.introduction_img {
+    border-radius: 3rem;
+}
+
+.introduction_text_wrapper {
+    margin: 10% auto 20% 10%;
+
+    > h3 {
+        font-weight: bold;
+    }
+
+    > p {
+        max-width: $text-optimal-width;
+        padding-left: 3rem;
+    }
+}
+
+.introduction_text_statement {
+    text-align: center;
+}
+
+/*#endregion*/
+
+
+
+/*#region Transitions & Animations */
+
+.introduction_img_wrapper:hover {
+    animation: intro_img_animation  infinite 10s;
+}
+
+@keyframes intro_img_animation {
+    0% {@include drop-shadow(-1rem, 1rem, 2rem, $wkd-white)}
+    25% {@include drop-shadow(-1rem, -1rem, 2rem, $wkd-orange)}
+    50% {@include drop-shadow(1rem, -1rem, 2rem, $wkd-pinkviolett)}
+    75% {@include drop-shadow(1rem, 1rem, 2rem, $wkd-orange)}
+ }
+
+// ? Text
+.introduction_first_h3,
+.introduction_first_p, 
+.introduction_second_h3,
+.introduction_second_p,
+.introduction_text_statement {
+    transition: color .5s;
+}
+
+.introduction_first_h3:hover,
+.introduction_first_p:hover, 
+.introduction_second_h3:hover,
+.introduction_second_p:hover,
+.introduction_text_statement:hover {
+    color: $wkd-orange;
+}
+
+/*#endregion*/
+
+
+
+/*#region Styling-Pseudoelements */
+
+// ? Introduction right-lane
+
+.introduction_section {
+    position: relative;
+}
+
+.introduction_section::before {
+    @include pseudo-element(2s, $wkd-grey);
+    right: 0;
+    top: -1rem;
+    height: 100%;
+}
+
+.introduction_section:hover::before {
+    border-color: $wkd-pinkviolett;
+    top: 0rem;
+    height: calc(100% - 2rem);
+}
+
+// ? Introduction Headline
+
+.introduction_text_wrapper {
+    position: relative;
+}
+
+.introduction_text_wrapper::before,
+.introduction_text_wrapper::after  {
+    @include pseudo-element(1s, $wkd-grey);
+}
+
+.introduction_text_wrapper::before {
+    left: -1.5rem;
+    top: -.5rem;
+    width: 2rem;
+}
+
+.introduction_text_wrapper::after {
+    left: -1rem;
+    top: -1rem;
+    height: 2rem;
+}
+
+.introduction_text_wrapper:hover::before {
+    width: 2.5rem;
+    border-color: $wkd-pinkviolett;
+}
+
+.introduction_text_wrapper:hover::after {
+    left: -1.5rem;
+    top: -.5rem;
+    height: 2.5rem;
+    border-color: $wkd-pinkviolett;
+}
+
+
+/*#endregion*/
+
+
+
+/*#region media queries */
+
+@media (min-width: 700px){
+
+    .introduction_section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .introduction_img_wrapper {
+        padding: 10% 20% 20% 20%;
+        aspect-ratio: 1/1;
+    }
+}
+
+@media (max-width: 500px){
+
+    .main {
+        padding: 0rem;
+    }
+
+    .introduction_section {
+        display: grid;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .introduction_img_wrapper {
+        padding: 10% 10% 10% 10%;
+        aspect-ratio: 1/1;
+    }
+
+    .introduction_text_wrapper {
+        margin: 5%;
+        
+        > h3 {
+            font-weight: bold;
+        }
+    
+        > p {
+            max-width: $text-optimal-width;
+            padding-left: 3rem;
+        }   
+    }
+
+    .introduction_section::before {
+        display: none;     
+    }
+}
+
+/* #endregion */

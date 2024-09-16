@@ -1,0 +1,224 @@
+@import './ColorsAndDesign.scss';
+
+
+
+/*#region navbar layout */
+
+.mynavbar {
+
+    display: flex;
+    padding-right: 1rem;
+
+    > .eye {
+
+        position: absolute;
+        left: 50vw;
+        bottom: -.75rem;
+        z-index: 1;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 350%;
+        background-color: $wkd-grey;
+
+        > .pupil {
+
+            width: 1.5rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: $wkd-grey;
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+
+        }
+
+    }
+
+    > ul {
+
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100vw;
+
+        > li {
+
+            display: flex;
+            justify-content: center;
+            font-size: larger;
+            font-weight: bold;
+            
+            .nav_item_projects_dropdown_li_1,
+            .nav_item_projects_dropdown_li_2 {
+
+                list-style-type: none;
+                    text-align: center;
+
+            } 
+
+      }
+
+    }
+
+}
+
+/*#endregion */
+
+
+
+/*#region Navbar Dropdown*/
+
+/* The dropdown container */
+
+.dropdown {
+
+    float: left;
+    overflow: hidden;
+
+}
+
+/* Dropdown content (hidden by default) */
+
+.dropdown_content {
+
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: $wkd-darkgrey;
+    padding: .5rem;
+
+}
+
+/* Links inside the dropdown */
+
+.dropdown_content a {
+
+    float: none;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    padding: .5rem;
+
+}
+
+.dropdown:hover .dropbtn {
+
+    transition: all .5s;
+    color: $wkd-orange;
+
+}
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown_content {
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+}
+
+.dropdown_content a:hover  {
+
+    transition: all .5s;
+    color: $wkd-orange;
+    transform: scale(1.1);
+
+}
+
+/*#endregion*/
+
+
+
+/*#region Transitions */
+
+.nav_item_home,
+.nav_item_projects,
+.nav_item_about,
+.nav_item_contact,
+.nav_item_settings {
+
+    > a:hover {
+
+        transition: all 1s ;
+        color: $wkd-orange;
+
+    }
+
+}
+
+.eye:hover  {
+
+    animation: eye_pupil_animation infinite 2s ease-in-out;   
+    outline: solid 5px $wkd-red;  
+
+}
+
+/*#endregion*/
+
+
+
+/*#region Animations */
+
+//? Dropdown-Box animation
+
+.dropdown:hover .dropdown_content {
+    animation: dropdown_box_animation infinite 5s;
+    border: solid 4px $wkd-pinkviolett;
+    border-radius: 1rem;
+}
+
+@keyframes dropdown_box_animation {
+    50% { border-color: $wkd-orange}
+}
+
+@keyframes eye_pupil_animation {
+    0% { outline-color: $wkd-grey}
+    25% { outline-color: $wkd-red}
+    50% { outline-color: $wkd-grey}
+    75% { outline-color:$wkd-red}
+}
+
+/*#endregion*/
+
+
+
+/*#region Styling-Pseudoelements */
+
+.mynavbar {
+    position: relative;
+}
+
+.mynavbar::after {
+    @include pseudo-element(2s, $wkd-grey);
+    left: 1rem;
+    bottom: 0;
+    width: calc(100% - 2rem);
+}
+
+.mynavbar:hover::after {
+    left: 25%;
+    width: 50%;
+    border-color: $wkd-pinkviolett;
+}
+
+/*#endregion*/
+
+
+
+/*#region Media Queries */
+
+@media (max-width: 500px) {
+
+    .mynavbar {
+        padding-right: 0rem;
+        
+        > ul {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+    }
+}
+
+/*#endregion */

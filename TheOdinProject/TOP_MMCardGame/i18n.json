@@ -1,0 +1,13 @@
+{
+  "locales": ["en", "de"],
+  "defaultLocale": "en",
+  "pages": {
+    "*": ["common"],
+    "/": ["home"],
+    "/about": ["about"],
+    "/contact": ["contact"],
+    "/project_top": ["project_top"],
+    "/projects_react_nextjs": ["projects_react_nextjs"],
+    "/settings": ["settings"]
+  }
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <title>Steve's Javascript Digital Clock</title>
+    <!-- Javascript und CSS Dateieinbindung -->
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Favicon & AppleTouch-->
+    <link rel="icon" sizes="16x16" href="pics/Logo/protesblog_favicon200x200.ico">
+    <link rel="apple-touch-icon" sizes="120x120" href="pics/Logo/protesblog_120x120.png" />
+    <!-- Metadaten  -->
+    <meta name="author" content="Stefan Bartl">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta charset="UTF-8">
+    <!-- Responsives Menü -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font -->
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    </style>
+</head>
+<body>
+		<div class="wrapper">
+      <h4>Steve's Javascript Clock & GEO</h4>
+			<p><span id="stunden">00</span>:<span id="minuten">00</span>:<span id="sekunden">00</span>  <span id="ampm">AM</span></p>
+      <p><span id="tag">27</span>.<span id="monat">11</span>.<span id="jahr">2021</span></p>
+        <h4>Hier bist du :</h4>
+		</div>
+
+    <div class="container">
+      <div class="row">
+        <label for="latitude">Breitengrad</label> <input id="latitude" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="longitude">Längengrad</label> <input id="longitude" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="altitude">Höhenlage</label> <input id="altitude" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="accuracy">Genauigkeit</label> <input id="accuracy" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="altitudeAccuracy">Genauigkeit Höhenlage</label> <input id="altitudeAccuracy" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="heading">Richtung</label> <input id="heading" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="speed">Geschwindigkeit</label> <input id="speed" type="text" value="">
+      </div>
+      <div class="row">
+        <label for="timestamp">Zeitstempel</label> <input id="timestamp" type="text" value="">
+      </div>
+      <div class="row">
+        <button onclick="getPosition()">Position ermitteln</button>
+      </div>
+    </div>
+    <div id="map-canvas"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
